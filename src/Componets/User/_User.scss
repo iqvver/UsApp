@@ -1,6 +1,14 @@
 .user {
+    margin-top: 12px;
     display: flex;
     align-items: center;
+    flex-grow: 1;
+    max-width: 30%;
+
+    a {
+        display: flex;
+        align-items: center;
+    }
 
     &__descr {
         margin-left: 16px;

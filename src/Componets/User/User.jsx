@@ -2,24 +2,22 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import userPhoto from "../../Assets/image/gus.svg";
 
-const User = () => {
+const User = ({ users }) => {
   return (
-    <NavLink to={"/profile"}>
-      <div className="user">
+    <div className="user">
+      <NavLink to={"/profile"}>
         <div className="user__img">
-          <img
-            src="https://w-dog.ru/wallpapers/6/0/287878365570025/kot-play.jpg"
-            alt="photo"
-          />
+          <img src={users.avatarUrl} alt={userPhoto} />
         </div>
         <div className="user__descr">
           <div className="user__name">
-            Алексей Миногаров <span>tag</span>
+            {users.firstName}
+            {users.lastName} <span>{users.userTag}</span>
           </div>
-          <div className="user__team">Analyst</div>
+          <div className="user__team">{users.department}</div>
         </div>
-      </div>
-    </NavLink>
+      </NavLink>
+    </div>
   );
 };
 
