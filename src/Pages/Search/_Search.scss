@@ -1,5 +1,78 @@
 @import './Tabs/TabsStyle/TabsStyle';
 
-.search {
+.container-wrapper {
     padding: 8px 16px 16px 16px;
+}
+
+.search {
+    &__title {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    &__form {
+        position: relative;
+        padding: 0 14px 0 14px;
+        margin-top: 18px;
+        display: flex;
+        align-items: center;
+        background-color: #F7F7F8;
+        width: 100%;
+        height: 40px;
+        border-radius: 16px;
+
+        &-loop {
+            padding-right: 10px;
+
+        }
+
+        img {
+            background-color: #F7F7F8;
+        }
+
+        &-input {
+            width: 100%;
+
+            input {
+                width: 100%;
+                border: none;
+                background: none;
+            }
+        }
+
+        &-btn {
+            position: absolute;
+            right: 10px;
+
+            button {
+                border: none;
+            }
+        }
+    }
+
+    &__nav {
+        margin-top: 22px;
+        max-width: 440px;
+        display: flex;
+        justify-content: space-between;
+
+        a {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 20px;
+            color: #97979B;
+        }
+    }
+
+    &__item {
+        padding: 0 10px 0 10px;
+    }
+}
+
+.active-link {
+    border-bottom: 1px solid #6534FF;
 }

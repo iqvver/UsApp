@@ -1,0 +1,100 @@
+.profile {
+    padding-top: 72px;
+
+    &__header {
+        padding: 20px 0 0 32px;
+        height: 280px;
+        background: #F7F7F8;
+    }
+
+    &__back {
+        button {
+            background: none;
+            border: none;
+        }
+    }
+
+    &__wrapper {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    &__img {
+        width: 104px;
+        height: 104px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+        }
+    }
+
+    &__descr {
+        margin-top: 24px;
+    }
+
+    &__name {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+
+        span {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 18px;
+            color: #97979B;
+        }
+    }
+
+    &__team {
+        margin-top: 12px;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 16px;
+        color: #55555C;
+    }
+
+    &__info {
+        margin-top: 27px;
+        padding: 0 20px 0 20px;
+
+        img {
+            height: 20px;
+        }
+    }
+
+    &__age {
+        display: flex;
+        position: relative;
+
+        &-data {
+            margin-left: 14px;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        &-day {
+            position: absolute;
+            right: 0;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+            color: #97979B;
+        }
+    }
+
+    &__phone {
+        margin-top: 48px;
+        font-size: 16px;
+        line-height: 20px;
+
+        &-num {
+            margin-left: 14px;
+        }
+    }
+
+}
