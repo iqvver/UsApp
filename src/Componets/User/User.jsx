@@ -5,7 +5,7 @@ import userPhoto from "../../Assets/image/gus.svg";
 const User = ({ users }) => {
   return (
     <div className="user">
-      <NavLink to={"/profile"}>
+      <NavLink to={"/profile/" + users.id}>
         <div className="user__img">
           <img src={users.avatarUrl} alt={userPhoto} />
         </div>

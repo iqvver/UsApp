@@ -1,17 +1,42 @@
-import React from "react";
+import * as React from "react";
 import ProfileUser from "./ProfileUser";
-import star from '../../Assets/icons/star.svg'
-import phone from '../../Assets/icons/phone.svg'
-import chevron from '../../Assets/icons/chevron.svg'
-import { useNavigate } from 'react-router-dom';
+import star from "../../Assets/icons/star.svg";
+import phone from "../../Assets/icons/phone.svg";
+import chevron from "../../Assets/icons/chevron.svg";
+import { getProfileUser } from "../../redux/profile-reducer";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { useParams } from "react-router-dom";
+import Fetching from "../Fetching/Fetching";
 
-const ProfileUserContainer = () => {
-  const navigate = useNavigate();
+const ProfileUserContainer = (props) => {
+  let { userId } = useParams();
+  debugger;
+  React.useEffect(() => {
+    props.getProfileUser(userId);
+  });
   return (
-    <div>
-      <ProfileUser star={star} phone={phone} chevron={chevron} navigate={navigate} />
-    </div>
+    <>
+      {props.userProfile ? (
+        <div>
+          <ProfileUser
+            star={star}
+            phone={phone}
+            chevron={chevron}
+            userProfile={props.userProfile}
+          />
+        </div>
+      ) : (
+        <Fetching />
+      )}
+    </>
   );
 };
 
-export default ProfileUserContainer;
+let mapStateToProps = (state) => ({
+  userProfile: state.profilePage.userProfile,
+});
+
+export default compose(connect(mapStateToProps, { getProfileUser }))(
+  ProfileUserContainer
+);
