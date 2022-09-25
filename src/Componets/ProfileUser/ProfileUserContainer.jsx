@@ -11,10 +11,10 @@ import Fetching from "../Fetching/Fetching";
 
 const ProfileUserContainer = (props) => {
   let { userId } = useParams();
-  debugger;
   React.useEffect(() => {
     props.getProfileUser(userId);
-  });
+  }, [userId]);
+  
   return (
     <>
       {props.userProfile ? (

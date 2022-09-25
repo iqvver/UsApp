@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import ModalFilter from "../../Componets/Modal/ModalFilter";
-const Search = ({ loop, bar }) => {
-  const [modalActive, showActiv] = useState(false);
+const Search = ({ loop, bar, modalActive, showActiv, sort, sortShow }) => {
   return (
     <>
       <div className={modalActive ? "menu menu_active" : "menu"}>
-        <ModalFilter />
+        <ModalFilter showActiv={showActiv} sortShow={sortShow} sort={sort} />
         <div className="menu__overlay" onClick={() => showActiv(false)}></div>
       </div>
       <div className="container">

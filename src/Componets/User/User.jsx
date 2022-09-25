@@ -11,7 +11,7 @@ const User = ({ users }) => {
         </div>
         <div className="user__descr">
           <div className="user__name">
-            {users.firstName}
+            {users.firstName} {''}
             {users.lastName} <span>{users.userTag}</span>
           </div>
           <div className="user__team">{users.department}</div>

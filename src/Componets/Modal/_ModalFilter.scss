@@ -39,14 +39,28 @@
         padding-left: 14px;
         display: flex;
         flex-direction: column;
-
-        input {
-            margin-top: 30px;
-            border-radius: 100%;
-        }
+        justify-content: center;
+        margin-top: 35px;
 
         label {
-            margin-left: 15px;
+            width: 200px;
+            margin-left: 40px;
+            text-align: left;
+            cursor: pointer;
+        }
+    }
+
+    &__btm {
+        height: 20px;
+        width: 20px;
+        background-color: #6534FF;
+        border-radius: 100%;
+        border-color: #6534FF;
+        border-width: 2px;
+        background-color: #FFFFFF;
+
+        &_active {
+            border-width: 5px;
         }
     }
 }
