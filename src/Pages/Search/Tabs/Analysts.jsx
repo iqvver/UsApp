@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import Fetching from "../../../Componets/Fetching/Fetching";
+import User from "../../../Componets/User/User";
 
-const Analysts = () => {
+const Analysts = ({ analytics }) => {
   return (
-    <div className='tab'>Analysts</div>
-  )
-}
+    <>
+      {analytics.length === 0 ? <Fetching /> : null}
+      <div className="tab">
+        {analytics.map((users) => (
+          <User users={users} />
+        ))}
+      </div>
+    </>
+  );
+};
 
-export default Analysts
+export default Analysts;

@@ -10,12 +10,24 @@ import Managers from "./Tabs/Managers";
 import loop from "../../Assets/icons/loop.svg";
 import bar from "../../Assets/icons/bar.svg";
 import { getUsers } from "../../redux/users-reduser";
+import {
+  getFilteredDesigners,
+  getFilteredAnalytics,
+  getFilteredManagement,
+  getFilteredIos,
+  getFilteredAndroid,
+} from "../../redux/filter-reduser";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
 const SearchContainer = (props) => {
   React.useEffect(() => {
-    props.getUsers(props.users);
+    props.getUsers();
+    props.getFilteredDesigners();
+    props.getFilteredAnalytics();
+    props.getFilteredManagement();
+    props.getFilteredIos();
+    props.getFilteredAndroid();
   }, []);
   const [modalActive, showActiv] = React.useState(false);
   const [sort, sortShow] = React.useState("firstName");
@@ -32,17 +44,21 @@ const SearchContainer = (props) => {
           modalActive={modalActive}
         />
         <Routes>
+          <Route path="all" element={<All users={props.users} sort={sort} />} />
           <Route
-            path="all"
-            element={
-              <All users={props.users} isFetching={props.isFetching} sort={sort} />
-            }
+            path="analysts"
+            element={<Analysts analytics={props.analytics} />}
           />
-          <Route path="analysts" element={<Analysts />} />
-          <Route path="android" element={<Android />} />
-          <Route path="designers" element={<Designers />} />
-          <Route path="ios" element={<Ios />} />
-          <Route path="managers" element={<Managers />} />
+          <Route path="android" element={<Android android={props.android} />} />
+          <Route
+            path="designers"
+            element={<Designers designers={props.designers} />}
+          />
+          <Route path="ios" element={<Ios ios={props.ios} />} />
+          <Route
+            path="managers"
+            element={<Managers management={props.management} />}
+          />
         </Routes>
       </div>
     </div>
@@ -52,7 +68,20 @@ const SearchContainer = (props) => {
 let mapStateToProps = (state) => {
   return {
     users: state.usersPage.users,
-    isFetching: state.usersPage.isFetching,
+    designers: state.filterPage.designers,
+    analytics: state.filterPage.analytics,
+    management: state.filterPage.management,
+    ios: state.filterPage.ios,
+    android: state.filterPage.android,
   };
 };
-export default compose(connect(mapStateToProps, { getUsers }))(SearchContainer);
+export default compose(
+  connect(mapStateToProps, {
+    getUsers,
+    getFilteredDesigners,
+    getFilteredAnalytics,
+    getFilteredManagement,
+    getFilteredIos,
+    getFilteredAndroid,
+  })
+)(SearchContainer);

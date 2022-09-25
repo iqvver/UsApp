@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import Fetching from "../../../Componets/Fetching/Fetching";
+import User from "../../../Componets/User/User";
 
-const Android = () => {
+const Android = ({ android }) => {
   return (
-    <div className='tab'>Android</div>
-  )
-}
+    <>
+      {android.length === 0 ? <Fetching /> : null}
+      <div className="tab">
+        {android.map((users) => (
+          <User users={users} />
+        ))}
+      </div>
+    </>
+  );
+};
 
-export default Android
+export default Android;

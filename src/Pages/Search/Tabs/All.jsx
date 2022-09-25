@@ -2,7 +2,7 @@ import React from "react";
 import Fetching from "../../../Componets/Fetching/Fetching";
 import User from "../../../Componets/User/User";
 
-const All = ({ users, isFetching, sort }) => {
+const All = ({ users, sort }) => {
   let sortUsers = [];
   {
     sort === "firstName"
@@ -14,9 +14,8 @@ const All = ({ users, isFetching, sort }) => {
     //показываю крутилку пока загружатся пользователи
     //пользователи загрузились, крутилка исчезает
     <>
-      {isFetching ? <Fetching /> : null}
+      {users.length === 0 ? <Fetching /> : null}
       <div className="tab">
-        {sort}
         {sortUsers.map((users) => (
           <User users={users} />
         ))}

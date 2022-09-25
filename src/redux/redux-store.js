@@ -3,12 +3,14 @@ import { configureStore } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
 import usersReducer from "./users-reduser";
 import profileReducer from "./profile-reducer";
+import filterReducer from "./filter-reduser";
 import { reducer as formReducer } from 'redux-form';
 
 // комбайн со всеми редьюсерами
 let reducer = combineReducers({
     usersPage: usersReducer,
     profilePage: profileReducer,
+    filterPage: filterReducer,
     form: formReducer
 });
 
