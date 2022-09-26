@@ -21,6 +21,18 @@ export const profileAPI = {
         return instance.get(`users?__` + userId)
     }
 }
+/*const options = {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  };
+fetch(
+    "https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/users?__497f6eca-6276-4993-bfeb-53cbbbba6f08",
+    options
+)
+    .then((response) => response.json())
+    .then((response) => console.log('ff', response))
+.catch((err) => console.error(err));
+*/
 
 export const filterUserAPI = {
     getDesignUser() {
@@ -44,10 +56,3 @@ export const filterUserAPI = {
             .then(response => { return response.data })
     }
 }
-
-/*fetch(
-    "https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/users?__example=ios",
-)
-    .then((response) => response.json())
-    .then((response) => console.log(response))
-.catch((err) => console.error(err));*/

@@ -7,8 +7,8 @@ const Analysts = ({ analytics }) => {
     <>
       {analytics.length === 0 ? <Fetching /> : null}
       <div className="tab">
-        {analytics.map((users) => (
-          <User users={users} />
+        {analytics.map((users, index) => (
+          <User key={index} users={users} />
         ))}
       </div>
     </>

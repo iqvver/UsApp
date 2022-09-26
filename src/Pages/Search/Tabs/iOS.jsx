@@ -7,8 +7,8 @@ const iOS = ({ ios }) => {
     <>
       {ios.length === 0 ? <Fetching /> : null}
       <div className="tab">
-        {ios.map((users) => (
-          <User users={users} />
+        {ios.map((users, index) => (
+          <User key={index} users={users} />
         ))}
       </div>
     </>

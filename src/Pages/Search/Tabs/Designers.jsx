@@ -7,8 +7,8 @@ const Designers = ({ designers }) => {
     <>
       {designers.length === 0 ? <Fetching /> : null}
       <div className="tab">
-        {designers.map((users) => (
-          <User users={users} />
+        {designers.map((users, index) => (
+          <User key={index} users={users} />
         ))}
       </div>
     </>

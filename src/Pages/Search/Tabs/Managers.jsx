@@ -7,8 +7,8 @@ const Managers = ({ management }) => {
     <>
       {management.length === 0 ? <Fetching /> : null}
       <div className="tab">
-        {management.map((users) => (
-          <User users={users} />
+        {management.map((users, index) => (
+          <User key={index} users={users} />
         ))}
       </div>
     </>

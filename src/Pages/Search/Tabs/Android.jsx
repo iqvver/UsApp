@@ -7,8 +7,8 @@ const Android = ({ android }) => {
     <>
       {android.length === 0 ? <Fetching /> : null}
       <div className="tab">
-        {android.map((users) => (
-          <User users={users} />
+        {android.map((users, index) => (
+          <User key={index} users={users} />
         ))}
       </div>
     </>
