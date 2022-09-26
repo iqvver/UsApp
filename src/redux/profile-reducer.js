@@ -1,10 +1,12 @@
 import { profileAPI } from "../Api/Api";
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE'; // перенная для получения профиля пользователя
+const SET_ERROR = 'SET_ERROR'; // ошибка
 
 // иноциализация переменных
 let initialState = {
-    userProfile: null // переменная профиля 
+    userProfile: null, // переменная профиля 
+    errorProfileUser: "", // ошибка при загрузке все пользователей
 };
 // редьюсер профиля пользователя
 const profileReducer = (state = initialState, action) => {
@@ -13,6 +15,10 @@ const profileReducer = (state = initialState, action) => {
             // получение профиля пользователя
             return { ...state, userProfile: action.userProfile }
         }
+        case SET_ERROR: {
+            // получение пользователей 
+            return { ...state, errorProfileUser: action.errorProfileUser }
+        }
         default:
             return state;
     }
@@ -20,12 +26,17 @@ const profileReducer = (state = initialState, action) => {
 
 // экшен для получение профиля 
 export const setProfileUserAC = (userProfile) => ({ type: SET_USER_PROFILE, userProfile });
+export const setErrorAC = (errorProfileUser) => ({ type: SET_ERROR, errorProfileUser });
 
 // получение, обработка и отправка профиля пользователя
 // ассинхронный экшен
 export const getProfileUser = (userId) => async (dispatch) => {
     let profile = await profileAPI.getProfile(userId);
-    dispatch(setProfileUserAC(profile.data.items));
+    if (profile.response.status < 400) {
+        dispatch(setProfileUserAC(profile.data.items));
+    } else {
+        dispatch(setErrorAC(profile.message));
+    }
 }
 
 export default profileReducer;

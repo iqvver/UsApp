@@ -39,7 +39,8 @@
         padding-left: 14px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
+        align-content: center;
         margin-top: 35px;
 
         label {
@@ -53,11 +54,11 @@
     &__btm {
         height: 20px;
         width: 20px;
-        background-color: #6534FF;
         border-radius: 100%;
-        border-color: #6534FF;
-        border-width: 2px;
+        border: 2px solid #6534FF;
         background-color: #FFFFFF;
+        line-height: normal;
+        padding: auto;
 
         &_active {
             border-width: 5px;

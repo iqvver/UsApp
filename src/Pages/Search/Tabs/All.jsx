@@ -1,8 +1,9 @@
 import React from "react";
+import Error from "../../../Componets/Error/Error";
 import Fetching from "../../../Componets/Fetching/Fetching";
 import User from "../../../Componets/User/User";
 
-const All = ({ users, sort }) => {
+const All = ({ users, sort, errorAllUsers }) => {
   //сортировка
   let sortUsers = [];
   sort === "firstName"
@@ -12,7 +13,7 @@ const All = ({ users, sort }) => {
     //показываю крутилку пока загружатся пользователи
     //пользователи загрузились, крутилка исчезает
     <>
-      {users.length === 0 ? <Fetching /> : null}
+      {errorAllUsers ? <Error /> : users.length === 0 ? <Fetching /> : null}
       <div className="tab">
         {sortUsers.map((users, index) => (
           <User key={index} users={users} />

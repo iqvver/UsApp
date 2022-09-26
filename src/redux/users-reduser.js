@@ -1,11 +1,13 @@
 import { userAPI } from '../Api/Api'
 
 const SET_USERS = 'SET_USERS'; // перенная для получения всех пользователей
+const SET_ERROR = 'SET_ERROR'; // ошибка
 const IS_FETCHING = 'IS_FETCHING';
 
 // иноциализация переменных
 let initialState = {
     users: [], // массив пользователей
+    errorAllUsers: "", // ошибка при загрузке все пользователей
     isFetching: false, // загрузка
 };
 
@@ -16,6 +18,10 @@ const usersReducer = (state = initialState, action) => {
         case SET_USERS: {
             // получение пользователей 
             return { ...state, users: action.users }
+        }
+        case SET_ERROR: {
+            // получение пользователей 
+            return { ...state, errorAllUsers: action.errorAllUsers }
         }
 
         case IS_FETCHING: {
@@ -30,6 +36,7 @@ const usersReducer = (state = initialState, action) => {
 
 // экшен для получения юзеров
 export const setUsersAC = (users) => ({ type: SET_USERS, users });
+export const setErrorAC = (errorAllUsers) => ({ type: SET_ERROR, errorAllUsers });
 // экшен загрузки
 export const setIsFetchingAC = (isFetching) => ({ type: IS_FETCHING, isFetching })
 
@@ -40,7 +47,11 @@ export const getUsers = () => {
         dispatch(setIsFetchingAC(true));
         let data = await userAPI.getUsers();
         dispatch(setIsFetchingAC(false));
-        dispatch(setUsersAC(data.items));
+        if (data.status < 500) {
+            dispatch(setUsersAC(data.data.items));
+        } else {
+            dispatch(setErrorAC(data.message));
+        }
     }
 }
 

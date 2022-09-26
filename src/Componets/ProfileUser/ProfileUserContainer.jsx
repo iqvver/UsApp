@@ -8,16 +8,19 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { useParams } from "react-router-dom";
 import Fetching from "../Fetching/Fetching";
+import Error from "../Error/Error";
 
 const ProfileUserContainer = (props) => {
   let { userId } = useParams();
   React.useEffect(() => {
     props.getProfileUser(userId);
   }, [userId]);
-  
+
   return (
     <>
-      {props.userProfile ? (
+      {props.errorProfileUser ? (
+        <Error />
+      ) : props.userProfile ? (
         <div>
           <ProfileUser
             star={star}
@@ -35,6 +38,7 @@ const ProfileUserContainer = (props) => {
 
 let mapStateToProps = (state) => ({
   userProfile: state.profilePage.userProfile,
+  errorProfileUser: state.profilePage.errorProfileUser,
 });
 
 export default compose(connect(mapStateToProps, { getProfileUser }))(

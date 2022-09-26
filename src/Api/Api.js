@@ -11,29 +11,33 @@ const instance = axios.create({
 export const userAPI = {
     getUsers() {
         return instance.get(`users?__example=all`)
-            .then(response => { return response.data })
+            .then(response => { return response })
+            .catch((error) => {
+                if (error) {
+                    // Request made and server responded error
+                    console.log('ошибка', error.message);
+                    return error
+                }
+            }
+            )
     }
 }
 
 // переход в профиль выбранной пользователя
 export const profileAPI = {
     getProfile(userId) {
-        return instance.get(`users?__` + userId)
+        return instance.get(`user?__` + userId)
+            .then(response => { return response })
+            .catch((error) => {
+                if (error) {
+                    // Request made and server responded error
+                    console.log('ошибка', error.message);
+                    return error
+                }
+            }
+            )
     }
 }
-/*const options = {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  };
-fetch(
-    "https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/users?__497f6eca-6276-4993-bfeb-53cbbbba6f08",
-    options
-)
-    .then((response) => response.json())
-    .then((response) => console.log('ff', response))
-.catch((err) => console.error(err));
-*/
-
 export const filterUserAPI = {
     getDesignUser() {
         return instance.get(`users?__example=design`)

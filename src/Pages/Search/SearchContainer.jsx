@@ -31,7 +31,6 @@ const SearchContainer = (props) => {
   }, []);
   const [modalActive, showActiv] = React.useState(false);
   const [sort, sortShow] = React.useState("firstName");
-
   return (
     <div className="container">
       <div className="container-wrapper">
@@ -44,7 +43,17 @@ const SearchContainer = (props) => {
           modalActive={modalActive}
         />
         <Routes>
-          <Route path="all" element={<All users={props.users} sort={sort} />} />
+          <Route
+            path="/*"
+            exact
+            element={
+              <All
+                users={props.users}
+                sort={sort}
+                errorAllUsers={props.errorAllUsers}
+              />
+            }
+          />
           <Route
             path="analysts"
             element={<Analysts analytics={props.analytics} />}
@@ -68,6 +77,7 @@ const SearchContainer = (props) => {
 let mapStateToProps = (state) => {
   return {
     users: state.usersPage.users,
+    errorAllUsers: state.usersPage.errorAllUsers,
     designers: state.filterPage.designers,
     analytics: state.filterPage.analytics,
     management: state.filterPage.management,
