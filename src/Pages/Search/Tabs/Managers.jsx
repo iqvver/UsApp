@@ -5,7 +5,7 @@ import User from "../../../Componets/User/User";
 const Managers = ({ management }) => {
   return (
     <>
-      {management.length === 0 ? <Fetching /> : null}
+      {!management ? <Fetching /> : null}
       <div className="tab">
         {management.map((users, index) => (
           <User key={index} users={users} />

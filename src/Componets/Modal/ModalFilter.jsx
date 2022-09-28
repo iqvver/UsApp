@@ -2,6 +2,14 @@ import React from "react";
 import close from "../../Assets/icons/close.svg";
 
 const ModalFilter = ({ showActiv, sortShow, sort }) => {
+  let setSortFirstName = () => {
+    sortShow("firstName");
+    showActiv(false);
+  };
+  let setSortBirtday = () => {
+    sortShow("birthday");
+    showActiv(false);
+  };
   return (
     <div className="modal">
       <div className="modal__title">Сортировка</div>
@@ -11,30 +19,22 @@ const ModalFilter = ({ showActiv, sortShow, sort }) => {
         </button>
       </div>
       <div className="modal__body">
-        <p>
-          <button
-            className={
-              sort === "firstName"
-                ? "modal__btm modal__btm_active"
-                : "modal__btm"
-            }
-            onClick={() => sortShow("firstName")}
-          >
-            <label>По алфавиту</label>
-          </button>
-        </p>
-        <p>
-          <button
-            className={
-              sort === "birthday"
-                ? "modal__btm modal__btm_active"
-                : "modal__btm"
-            }
-            onClick={() => sortShow("birthday")}
-          >
-            <label>По дню рождения</label>
-          </button>
-        </p>
+        <div
+          className={
+            sort === "firstName" ? "modal__btm modal__btm_active" : "modal__btm"
+          }
+          onClick={() => setSortFirstName()}
+        >
+          <label>По алфавиту</label>
+        </div>
+        <div
+          className={
+            sort === "birthday" ? "modal__btm modal__btm_active" : "modal__btm"
+          }
+          onClick={() => setSortBirtday()}
+        >
+          <label>По дню рождения</label>
+        </div>
       </div>
     </div>
   );

@@ -45,7 +45,6 @@ const SearchContainer = (props) => {
         <Routes>
           <Route
             path="/*"
-            exact
             element={
               <All
                 users={props.users}

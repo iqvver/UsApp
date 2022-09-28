@@ -29,7 +29,7 @@ const Search = ({ loop, bar, modalActive, showActiv, sort, sortShow }) => {
           </div>
           <div className="search__nav">
             <NavLink
-              to={"/"}
+              to={"/all"}
               className={({ isActive }) => (isActive ? "active-link" : " ")}
             >
               <div className="search__item">Все</div>

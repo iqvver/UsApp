@@ -26,7 +26,7 @@ export const userAPI = {
 // переход в профиль выбранной пользователя
 export const profileAPI = {
     getProfile(userId) {
-        return instance.get(`user?__` + userId)
+        return instance.get(`users?__` + userId)
             .then(response => { return response })
             .catch((error) => {
                 if (error) {
@@ -41,22 +41,62 @@ export const profileAPI = {
 export const filterUserAPI = {
     getDesignUser() {
         return instance.get(`users?__example=design`)
-            .then(response => { return response.data })
+            .then(response => { return response })
+            .catch((error) => {
+                if (error) {
+                    // Request made and server responded error
+                    console.log('ошибка', error.message);
+                    return error
+                }
+            }
+            )
     },
     getAnalyticsUser() {
         return instance.get(`users?__example=analytics`)
-            .then(response => { return response.data })
+            .then(response => { return response })
+            .catch((error) => {
+                if (error) {
+                    // Request made and server responded error
+                    console.log('ошибка', error.message);
+                    return error
+                }
+            }
+            )
     },
     getManagementUser() {
         return instance.get(`users?__example=management`)
-            .then(response => { return response.data })
+            .then(response => { return response })
+            .catch((error) => {
+                if (error) {
+                    // Request made and server responded error
+                    console.log('ошибка', error.message);
+                    return error
+                }
+            }
+            )
     },
     getIosUser() {
         return instance.get(`users?__example=ios`)
-            .then(response => { return response.data })
+            .then(response => { return response })
+            .catch((error) => {
+                if (error) {
+                    // Request made and server responded error
+                    console.log('ошибка', error.message);
+                    return error
+                }
+            }
+            )
     },
     getAandroidUser() {
         return instance.get(`users?__example=android`)
-            .then(response => { return response.data })
+            .then(response => { return response })
+            .catch((error) => {
+                if (error) {
+                    // Request made and server responded error
+                    console.log('ошибка', error.message);
+                    return error
+                }
+            }
+            )
     }
 }

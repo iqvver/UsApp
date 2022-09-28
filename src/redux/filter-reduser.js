@@ -63,8 +63,9 @@ export const getFilteredDesigners = () => {
     return async (dispatch) => {
         dispatch(setIsFetchingAC(true));
         let data = await filterUserAPI.getDesignUser();
+        debugger;
         dispatch(setIsFetchingAC(false));
-        dispatch(setFilteredDesignersAC(data.items));
+        dispatch(setFilteredDesignersAC(data.data.items));
     }
 }
 export const getFilteredAnalytics = () => {
@@ -72,7 +73,7 @@ export const getFilteredAnalytics = () => {
         dispatch(setIsFetchingAC(true));
         let data = await filterUserAPI.getAnalyticsUser();
         dispatch(setIsFetchingAC(false));
-        dispatch(setFilteredAnalyticsAC(data.items));
+        dispatch(setFilteredAnalyticsAC(data.data.items));
     }
 }
 export const getFilteredManagement = () => {
@@ -80,7 +81,7 @@ export const getFilteredManagement = () => {
         dispatch(setIsFetchingAC(true));
         let data = await filterUserAPI.getManagementUser();
         dispatch(setIsFetchingAC(false));
-        dispatch(setFilteredManagementAC(data.items));
+        dispatch(setFilteredManagementAC(data.data.items));
     }
 }
 export const getFilteredIos = () => {
@@ -88,7 +89,7 @@ export const getFilteredIos = () => {
         dispatch(setIsFetchingAC(true));
         let data = await filterUserAPI.getIosUser();
         dispatch(setIsFetchingAC(false));
-        dispatch(setFilteredIosAC(data.items));
+        dispatch(setFilteredIosAC(data.data.items));
     }
 }
 export const getFilteredAndroid = () => {
@@ -96,7 +97,7 @@ export const getFilteredAndroid = () => {
         dispatch(setIsFetchingAC(true));
         let data = await filterUserAPI.getAandroidUser();
         dispatch(setIsFetchingAC(false));
-        dispatch(setFilteredAndroidAC(data.items));
+        dispatch(setFilteredAndroidAC(data.data.items));
     }
 }
 
