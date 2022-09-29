@@ -53,9 +53,9 @@ export const getUsers = () => {
     return async (dispatch) => {
         dispatch(setIsFetchingAC(true));
         let data = await userAPI.getUsers();
-        dispatch(setIsFetchingAC(false));
         if (data.status < 500) {
             dispatch(setUsersAC(data.data.items));
+            dispatch(setIsFetchingAC(false));
         } else {
             dispatch(setErrorAC(data.message));
         }

@@ -3,3 +3,24 @@
     height: 0.33px;
     background-color: #C3C3C6;
 }
+
+.divider-sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0 40px 0;
+
+    &__text {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 20px;
+        text-align: center;
+        color: #C3C3C6;
+    }
+
+    &__line {
+        width: 45%;
+        height: 1px;
+        background-color: #C3C3C6;
+    }
+}

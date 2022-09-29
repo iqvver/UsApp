@@ -19,6 +19,7 @@ import {
 } from "../../redux/filter-reduser";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import { getDayOfYear } from "../../utils";
 
 const SearchContainer = (props) => {
   React.useEffect(() => {
@@ -37,21 +38,52 @@ const SearchContainer = (props) => {
     newSearchUs(event.target.value);
     setName(event.target.value);
   };
-  const filterUsers = props.users.filter((user) => {
+  let filterUsers = props.users.filter((user) => {
     return (
       user.firstName.toLowerCase().includes(name.toLowerCase()) ||
       user.lastName.toLowerCase().includes(name.toLowerCase()) ||
       user.userTag.toLowerCase().includes(name.toLowerCase())
     );
   });
+  /*const splitted = filterUsers.reduce(
+    (acc, elem) => {
+      if (getDayOfYear(new Date(elem.birthday)) < getDayOfYear(new Date())) {
+        acc[1].push({ ...elem, celebrated: true });
+      } else {
+        acc[0].push(elem);
+      }
+      return acc;
+    },
+    [[], []]
+  );
+  splitted[1].sort(
+    (a, b) => new Date(a.birthday).getTime() - new Date(b.birthday).getTime()
+  );
+  console.log(splitted);*/
 
-  sortUser === "firstName"
-    ? filterUsers.sort((a, b) => (a.firstName > b.firstName ? 1 : -1))
-    : filterUsers.sort((a, b) => {
-        var aa = a.birthday.split("-").join();
-        var bb = b.birthday.split("-").join();
-        return aa < bb ? -1 : aa > bb ? 1 : 0;
-      });
+  filterUsers =
+    sortUser === "firstName"
+      ? filterUsers.sort((a, b) => (a.firstName > b.firstName ? 1 : -1))
+      : filterUsers
+          .sort(
+            (a, b) =>
+              new Date(a.birthday).getTime() - new Date(b.birthday).getTime()
+          )
+          .reduce(
+            (acc, elem) => {
+              if (
+                getDayOfYear(new Date(elem.birthday)) < getDayOfYear(new Date())
+              ) {
+                acc[1].push(elem);
+              } else {
+                acc[0].push(elem);
+              }
+              return acc;
+            },
+            [[], []],
+            
+          );
+
   return (
     <div className="container">
       <div className="container-wrapper">
@@ -71,6 +103,7 @@ const SearchContainer = (props) => {
             element={
               <All
                 filterUsers={filterUsers}
+                isFetching={props.isFetching}
                 errorAllUsers={props.errorAllUsers}
               />
             }
@@ -99,6 +132,7 @@ let mapStateToProps = (state) => {
   return {
     users: state.usersPage.users,
     errorAllUsers: state.usersPage.errorAllUsers,
+    isFetching: state.usersPage.isFetching,
     designers: state.filterPage.designers,
     analytics: state.filterPage.analytics,
     management: state.filterPage.management,

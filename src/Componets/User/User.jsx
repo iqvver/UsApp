@@ -15,6 +15,7 @@ const User = ({ users }) => {
             {users.lastName} <span>{users.userTag}</span>
           </div>
           <div className="user__team">{users.department}</div>
+          <div className="user__team">{users.birthday}</div>
         </div>
       </NavLink>
     </div>
