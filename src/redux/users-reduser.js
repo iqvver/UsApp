@@ -3,12 +3,14 @@ import { userAPI } from '../Api/Api'
 const SET_USERS = 'SET_USERS'; // перенная для получения всех пользователей
 const SET_ERROR = 'SET_ERROR'; // ошибка
 const IS_FETCHING = 'IS_FETCHING';
+const IS_US = 'IS_US';
 
 // иноциализация переменных
 let initialState = {
     users: [], // массив пользователей
     errorAllUsers: "", // ошибка при загрузке все пользователей
     isFetching: false, // загрузка
+    usName: ''
 };
 
 // редьюсер получения массива пользователей
@@ -23,6 +25,10 @@ const usersReducer = (state = initialState, action) => {
             // получение пользователей 
             return { ...state, errorAllUsers: action.errorAllUsers }
         }
+        case SET_ERROR: {
+            // получение пользователей 
+            return { ...state, usName: action.usName }
+        }
 
         case IS_FETCHING: {
             // загрузка on/off
@@ -36,6 +42,7 @@ const usersReducer = (state = initialState, action) => {
 
 // экшен для получения юзеров
 export const setUsersAC = (users) => ({ type: SET_USERS, users });
+export const setUsAC = (usName) => ({ type: IS_US, usName });
 export const setErrorAC = (errorAllUsers) => ({ type: SET_ERROR, errorAllUsers });
 // экшен загрузки
 export const setIsFetchingAC = (isFetching) => ({ type: IS_FETCHING, isFetching })
@@ -53,6 +60,9 @@ export const getUsers = () => {
             dispatch(setErrorAC(data.message));
         }
     }
+}
+export const newSearchUs = (usName) => (dispatch) => {
+    dispatch(setUsAC(usName));
 }
 
 export default usersReducer;

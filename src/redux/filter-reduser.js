@@ -63,7 +63,6 @@ export const getFilteredDesigners = () => {
     return async (dispatch) => {
         dispatch(setIsFetchingAC(true));
         let data = await filterUserAPI.getDesignUser();
-        debugger;
         dispatch(setIsFetchingAC(false));
         dispatch(setFilteredDesignersAC(data.data.items));
     }

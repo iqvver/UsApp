@@ -9,7 +9,7 @@ import Ios from "./Tabs/Ios";
 import Managers from "./Tabs/Managers";
 import loop from "../../Assets/icons/loop.svg";
 import bar from "../../Assets/icons/bar.svg";
-import { getUsers } from "../../redux/users-reduser";
+import { getUsers, newSearchUs } from "../../redux/users-reduser";
 import {
   getFilteredDesigners,
   getFilteredAnalytics,
@@ -28,9 +28,19 @@ const SearchContainer = (props) => {
     props.getFilteredManagement();
     props.getFilteredIos();
     props.getFilteredAndroid();
+    props.newSearchUs(props.usName);
   }, []);
   const [modalActive, showActiv] = React.useState(false);
   const [sort, sortShow] = React.useState("firstName");
+  const [name, setName] = React.useState(props.usName);
+  let handleChange = (event) => {
+    newSearchUs(event.target.value);
+    setName(event.target.value);
+    console.log(filterUsers);
+  };
+  const filterUsers = props.users.filter((user) => {
+    return user.firstName.toLowerCase().includes(name.toLowerCase());
+  });
   return (
     <div className="container">
       <div className="container-wrapper">
@@ -41,6 +51,8 @@ const SearchContainer = (props) => {
           sortShow={sortShow}
           sort={sort}
           modalActive={modalActive}
+          name={name}
+          handleChange={handleChange}
         />
         <Routes>
           <Route
@@ -48,6 +60,7 @@ const SearchContainer = (props) => {
             element={
               <All
                 users={props.users}
+                filterUsers={filterUsers}
                 sort={sort}
                 errorAllUsers={props.errorAllUsers}
               />
@@ -82,6 +95,8 @@ let mapStateToProps = (state) => {
     management: state.filterPage.management,
     ios: state.filterPage.ios,
     android: state.filterPage.android,
+    usName: state.usersPage.usName,
+    newSearchUs: state.usersPage.newSearchUs,
   };
 };
 export default compose(
@@ -92,5 +107,6 @@ export default compose(
     getFilteredManagement,
     getFilteredIos,
     getFilteredAndroid,
+    newSearchUs,
   })
 )(SearchContainer);

@@ -1,7 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import ModalFilter from "../../Componets/Modal/ModalFilter";
-const Search = ({ loop, bar, modalActive, showActiv, sort, sortShow }) => {
+const Search = ({
+  loop,
+  bar,
+  modalActive,
+  showActiv,
+  sort,
+  sortShow,
+  name,
+  handleChange,
+}) => {
   return (
     <>
       <div className={modalActive ? "menu menu_active" : "menu"}>
@@ -13,20 +22,23 @@ const Search = ({ loop, bar, modalActive, showActiv, sort, sortShow }) => {
           <div className="search__title">Поиск</div>
           <div className="search__form">
             <img src={loop} alt="loop" className="search__form-loop" />
-            <div className="search__form-input">
+            <form className="search__form-input">
               <input
+                onChange={(e) => handleChange(e)}
                 name="search"
                 id="search"
+                value={name}
                 type="text"
                 placeholder="Введи имя, тег, почту..."
               />
-            </div>
+            </form>
             <div className="search__form-btn">
               <button onClick={() => showActiv(true)}>
                 <img src={bar} alt="bar" />
               </button>
             </div>
           </div>
+          Name: {name}
           <div className="search__nav">
             <NavLink
               to={"/all"}
