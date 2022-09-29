@@ -1,13 +1,11 @@
 import React from "react";
 import Error from "../../../Componets/Error/Error";
+import ErrorSearch from "../../../Componets/ErrorSearch/ErrorSearch";
 import Fetching from "../../../Componets/Fetching/Fetching";
 import User from "../../../Componets/User/User";
 
-const All = ({ sort, errorAllUsers, filterUsers }) => {
-  //сортировка
-  sort === "firstName"
-    ? filterUsers.sort((a, b) => (a.firstName > b.firstName ? 1 : -1))
-    : filterUsers.sort((a, b) => (a.birthday > b.birthday ? 1 : -1));
+const All = ({ errorAllUsers, filterUsers }) => {
+  if (filterUsers.length === 0) return <ErrorSearch />;
   return (
     //показываю крутилку пока загружатся пользователи
     //пользователи загрузились, крутилка исчезает

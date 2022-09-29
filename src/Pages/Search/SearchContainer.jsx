@@ -31,16 +31,27 @@ const SearchContainer = (props) => {
     props.newSearchUs(props.usName);
   }, []);
   const [modalActive, showActiv] = React.useState(false);
-  const [sort, sortShow] = React.useState("firstName");
+  const [sortUser, sortShow] = React.useState("firstName");
   const [name, setName] = React.useState(props.usName);
   let handleChange = (event) => {
     newSearchUs(event.target.value);
     setName(event.target.value);
-    console.log(filterUsers);
   };
   const filterUsers = props.users.filter((user) => {
-    return user.firstName.toLowerCase().includes(name.toLowerCase());
+    return (
+      user.firstName.toLowerCase().includes(name.toLowerCase()) ||
+      user.lastName.toLowerCase().includes(name.toLowerCase()) ||
+      user.userTag.toLowerCase().includes(name.toLowerCase())
+    );
   });
+
+  sortUser === "firstName"
+    ? filterUsers.sort((a, b) => (a.firstName > b.firstName ? 1 : -1))
+    : filterUsers.sort((a, b) => {
+        var aa = a.birthday.split("-").join();
+        var bb = b.birthday.split("-").join();
+        return aa < bb ? -1 : aa > bb ? 1 : 0;
+      });
   return (
     <div className="container">
       <div className="container-wrapper">
@@ -49,7 +60,7 @@ const SearchContainer = (props) => {
           bar={bar}
           showActiv={showActiv}
           sortShow={sortShow}
-          sort={sort}
+          sortUser={sortUser}
           modalActive={modalActive}
           name={name}
           handleChange={handleChange}
@@ -59,9 +70,7 @@ const SearchContainer = (props) => {
             path="/*"
             element={
               <All
-                users={props.users}
                 filterUsers={filterUsers}
-                sort={sort}
                 errorAllUsers={props.errorAllUsers}
               />
             }

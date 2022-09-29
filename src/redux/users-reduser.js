@@ -25,7 +25,7 @@ const usersReducer = (state = initialState, action) => {
             // получение пользователей 
             return { ...state, errorAllUsers: action.errorAllUsers }
         }
-        case SET_ERROR: {
+        case IS_US: {
             // получение пользователей 
             return { ...state, usName: action.usName }
         }

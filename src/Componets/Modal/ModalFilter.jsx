@@ -1,7 +1,7 @@
 import React from "react";
 import close from "../../Assets/icons/close.svg";
 
-const ModalFilter = ({ showActiv, sortShow, sort }) => {
+const ModalFilter = ({ showActiv, sortShow, sortUser }) => {
   let setSortFirstName = () => {
     sortShow("firstName");
     showActiv(false);
@@ -21,7 +21,7 @@ const ModalFilter = ({ showActiv, sortShow, sort }) => {
       <div className="modal__body">
         <div
           className={
-            sort === "firstName" ? "modal__btm modal__btm_active" : "modal__btm"
+            sortUser === "firstName" ? "modal__btm modal__btm_active" : "modal__btm"
           }
           onClick={() => setSortFirstName()}
         >
@@ -29,7 +29,7 @@ const ModalFilter = ({ showActiv, sortShow, sort }) => {
         </div>
         <div
           className={
-            sort === "birthday" ? "modal__btm modal__btm_active" : "modal__btm"
+            sortUser === "birthday" ? "modal__btm modal__btm_active" : "modal__btm"
           }
           onClick={() => setSortBirtday()}
         >

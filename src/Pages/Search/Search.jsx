@@ -6,7 +6,7 @@ const Search = ({
   bar,
   modalActive,
   showActiv,
-  sort,
+  sortUser,
   sortShow,
   name,
   handleChange,
@@ -14,7 +14,7 @@ const Search = ({
   return (
     <>
       <div className={modalActive ? "menu menu_active" : "menu"}>
-        <ModalFilter showActiv={showActiv} sortShow={sortShow} sort={sort} />
+        <ModalFilter showActiv={showActiv} sortShow={sortShow} sortUser={sortUser} />
         <div className="menu__overlay" onClick={() => showActiv(false)}></div>
       </div>
       <div className="container">
@@ -29,7 +29,7 @@ const Search = ({
                 id="search"
                 value={name}
                 type="text"
-                placeholder="Введи имя, тег, почту..."
+                placeholder="Введи имя, тег..."
               />
             </form>
             <div className="search__form-btn">
@@ -38,7 +38,6 @@ const Search = ({
               </button>
             </div>
           </div>
-          Name: {name}
           <div className="search__nav">
             <NavLink
               to={"/all"}
