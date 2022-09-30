@@ -9,6 +9,7 @@ import Ios from "./Tabs/Ios";
 import Managers from "./Tabs/Managers";
 import loop from "../../Assets/icons/loop.svg";
 import bar from "../../Assets/icons/bar.svg";
+import barBlue from "../../Assets/icons/barBlue.svg";
 import { getUsers, newSearchUs } from "../../redux/users-reduser";
 import {
   getFilteredDesigners,
@@ -19,7 +20,7 @@ import {
 } from "../../redux/filter-reduser";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { getDayOfYear } from "../../utils";
+import { getDayOfYear, dateToYMD } from "../../utils";
 
 const SearchContainer = (props) => {
   React.useEffect(() => {
@@ -45,29 +46,17 @@ const SearchContainer = (props) => {
       user.userTag.toLowerCase().includes(name.toLowerCase())
     );
   });
-  /*const splitted = filterUsers.reduce(
-    (acc, elem) => {
-      if (getDayOfYear(new Date(elem.birthday)) < getDayOfYear(new Date())) {
-        acc[1].push({ ...elem, celebrated: true });
-      } else {
-        acc[0].push(elem);
-      }
-      return acc;
-    },
-    [[], []]
-  );
-  splitted[1].sort(
-    (a, b) => new Date(a.birthday).getTime() - new Date(b.birthday).getTime()
-  );
-  console.log(splitted);*/
 
   filterUsers =
     sortUser === "firstName"
       ? filterUsers.sort((a, b) => (a.firstName > b.firstName ? 1 : -1))
       : filterUsers
-          .sort(
-            (a, b) =>
-              new Date(a.birthday).getTime() - new Date(b.birthday).getTime()
+          .sort((a, b) =>
+            dateToYMD(new Date(a.birthday)) >
+            dateToYMD(new Date(b.birthday)) >
+            0
+              ? 1
+              : -1
           )
           .reduce(
             (acc, elem) => {
@@ -80,8 +69,7 @@ const SearchContainer = (props) => {
               }
               return acc;
             },
-            [[], []],
-            
+            [[], []]
           );
 
   return (
@@ -90,6 +78,7 @@ const SearchContainer = (props) => {
         <Search
           loop={loop}
           bar={bar}
+          barBlue={barBlue}
           showActiv={showActiv}
           sortShow={sortShow}
           sortUser={sortUser}

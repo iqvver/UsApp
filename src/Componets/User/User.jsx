@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import userPhoto from "../../Assets/image/gus.svg";
+import { dateToYMD } from "../../utils";
 
-const User = ({ users }) => {
+const User = ({ users, birthday }) => {
   return (
     <div className="user">
       <NavLink to={`/profile/${users.id}`}>
@@ -11,11 +12,15 @@ const User = ({ users }) => {
         </div>
         <div className="user__descr">
           <div className="user__name">
-            {users.firstName} {''}
+            {users.firstName} {""}
             {users.lastName} <span>{users.userTag}</span>
           </div>
+          {birthday ? (
+            <div className="user__data">{dateToYMD(new Date(birthday))}</div>
+          ) : (
+            <div></div>
+          )}
           <div className="user__team">{users.department}</div>
-          <div className="user__team">{users.birthday}</div>
         </div>
       </NavLink>
     </div>

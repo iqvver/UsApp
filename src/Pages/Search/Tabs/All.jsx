@@ -2,9 +2,11 @@ import React from "react";
 import Error from "../../../Componets/Error/Error";
 import ErrorSearch from "../../../Componets/ErrorSearch/ErrorSearch";
 import Fetching from "../../../Componets/Fetching/Fetching";
-import User from "../../../Componets/User/User";
+import User from "../../../Componets/User/User";import { dateToYMD } from "../../../utils";
 
 const All = ({ errorAllUsers, filterUsers, isFetching }) => {
+  
+
   return (
     //показываю крутилку пока загружатся пользователи
     //пользователи загрузились, крутилка исчезает
@@ -37,7 +39,7 @@ const AllSortBd = ({ filterUsers }) => {
         <div className="divider-sort__line"></div>
       </div>
       {filterUsers[1].map((users, index) => (
-        <User key={index} users={users} />
+        <User key={index} users={users} birthday={users.birthday} />
       ))}
     </>
   );

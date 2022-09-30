@@ -4,6 +4,7 @@ import ModalFilter from "../../Componets/Modal/ModalFilter";
 const Search = ({
   loop,
   bar,
+  barBlue,
   modalActive,
   showActiv,
   sortUser,
@@ -34,7 +35,7 @@ const Search = ({
             </form>
             <div className="search__form-btn">
               <button onClick={() => showActiv(true)}>
-                <img src={bar} alt="bar" />
+                <img className="search__form-btn__img search__form-btn__img_active" src={sortUser === 'birthday' ? barBlue : bar} alt="bar" />
               </button>
             </div>
           </div>

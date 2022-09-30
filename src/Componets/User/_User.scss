@@ -1,9 +1,6 @@
 .user {
     margin-top: 12px;
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    max-width: 30%;
+    width: 100%;
 
     a {
         display: flex;
@@ -11,6 +8,11 @@
     }
 
     &__descr {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-content: space-between;
         margin-left: 16px;
     }
 
@@ -27,8 +29,18 @@
         }
     }
 
+    &__data {
+        display: flex;
+        justify-content: flex-end;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 20px;
+        text-align: right;
+        color: #55555C;
+
+    }
+
     &__team {
-        margin-top: 3px;
         font-weight: 400;
         font-size: 13px;
         line-height: 16px;
