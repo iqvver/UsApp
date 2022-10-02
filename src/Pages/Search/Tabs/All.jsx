@@ -2,11 +2,9 @@ import React from "react";
 import Error from "../../../Componets/Error/Error";
 import ErrorSearch from "../../../Componets/ErrorSearch/ErrorSearch";
 import Fetching from "../../../Componets/Fetching/Fetching";
-import User from "../../../Componets/User/User";import { dateToYMD } from "../../../utils";
+import User from "../../../Componets/User/User";
 
-const All = ({ errorAllUsers, filterUsers, isFetching }) => {
-  
-
+const All = ({ errorAllUsers, filterUsers, isFetching, sortUser }) => {
   return (
     //показываю крутилку пока загружатся пользователи
     //пользователи загрузились, крутилка исчезает
@@ -15,7 +13,7 @@ const All = ({ errorAllUsers, filterUsers, isFetching }) => {
       <div className="tab">
         {filterUsers.length === 0 && !isFetching ? (
           <ErrorSearch />
-        ) : filterUsers.length !== 2 ? (
+        ) : sortUser === 'firstName' ? (
           filterUsers.map((users, index) => <User key={index} users={users} />)
         ) : (
           <AllSortBd filterUsers={filterUsers} />
@@ -24,7 +22,6 @@ const All = ({ errorAllUsers, filterUsers, isFetching }) => {
     </>
   );
 };
-
 export default All;
 
 const AllSortBd = ({ filterUsers }) => {

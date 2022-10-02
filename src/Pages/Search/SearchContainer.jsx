@@ -30,7 +30,7 @@ const SearchContainer = (props) => {
     props.getFilteredManagement();
     props.getFilteredIos();
     props.getFilteredAndroid();
-    props.newSearchUs(props.usName);
+    props.newSearchUs();
   }, []);
   const [modalActive, showActiv] = React.useState(false);
   const [sortUser, sortShow] = React.useState("firstName");
@@ -94,6 +94,7 @@ const SearchContainer = (props) => {
                 filterUsers={filterUsers}
                 isFetching={props.isFetching}
                 errorAllUsers={props.errorAllUsers}
+                sortUser={sortUser}
               />
             }
           />

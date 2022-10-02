@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import userPhoto from "../../Assets/image/gus.svg";
-import { dateToYMD } from "../../utils";
 
 const User = ({ users, birthday }) => {
+  //console.log(new Date(birthday).toLocaleString('en-us',{month:'short', day:'numeric'}));
   return (
     <div className="user">
       <NavLink to={`/profile/${users.id}`}>
@@ -16,7 +16,12 @@ const User = ({ users, birthday }) => {
             {users.lastName} <span>{users.userTag}</span>
           </div>
           {birthday ? (
-            <div className="user__data">{dateToYMD(new Date(birthday))}</div>
+            <div className="user__data">
+              {new Date(birthday).toLocaleString("ru-ru", {
+                month: "short",
+                day: "numeric",
+              })}
+            </div>
           ) : (
             <div></div>
           )}

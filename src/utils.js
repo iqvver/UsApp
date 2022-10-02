@@ -9,7 +9,7 @@ export const getDayOfYear = (now) => {
 }
 
 export const dateToYMD = (date) => {
-    var d = date.getDate();
-    var m = date.getMonth() + 1;
-    return "" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    return "" + (month <= 9 ? "0" + month : month) + "-" + (day <= 9 ? "0" + day : day);
 }
