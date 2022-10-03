@@ -15,7 +15,11 @@ const Search = ({
   return (
     <>
       <div className={modalActive ? "menu menu_active" : "menu"}>
-        <ModalFilter showActiv={showActiv} sortShow={sortShow} sortUser={sortUser} />
+        <ModalFilter
+          showActiv={showActiv}
+          sortShow={sortShow}
+          sortUser={sortUser}
+        />
         <div className="menu__overlay" onClick={() => showActiv(false)}></div>
       </div>
       <div className="container">
@@ -23,25 +27,29 @@ const Search = ({
           <div className="search__title">Поиск</div>
           <div className="search__form">
             <img src={loop} alt="loop" className="search__form-loop" />
-            <form className="search__form-input">
+            <div className="search__form-input">
               <input
-                onChange={(e) => handleChange(e)}
+                onChange={(event) => handleChange(event)}
                 name="search"
                 id="search"
                 value={name}
                 type="text"
                 placeholder="Введи имя, тег..."
               />
-            </form>
+            </div>
             <div className="search__form-btn">
               <button onClick={() => showActiv(true)}>
-                <img className="search__form-btn__img search__form-btn__img_active" src={sortUser === 'birthday' ? barBlue : bar} alt="bar" />
+                <img
+                  className="search__form-btn__img search__form-btn__img_active"
+                  src={sortUser === "birthday" ? barBlue : bar}
+                  alt="bar"
+                />
               </button>
             </div>
           </div>
           <div className="search__nav">
             <NavLink
-              to={"/all"}
+              to={"all"}
               className={({ isActive }) => (isActive ? "active-link" : " ")}
             >
               <div className="search__item">Все</div>

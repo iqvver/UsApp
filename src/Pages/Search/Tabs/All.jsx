@@ -4,19 +4,27 @@ import ErrorSearch from "../../../Componets/ErrorSearch/ErrorSearch";
 import Fetching from "../../../Componets/Fetching/Fetching";
 import User from "../../../Componets/User/User";
 
-const All = ({ errorAllUsers, filterUsers, isFetching, sortUser }) => {
+const All = ({ errorAllUsers, isFetching, sortUser, users }) => {
   return (
     //показываю крутилку пока загружатся пользователи
     //пользователи загрузились, крутилка исчезает
     <>
-      {errorAllUsers ? <Error /> : isFetching ? <Fetching /> : null}
+      {errorAllUsers ? (
+        <Error />
+      ) : isFetching ? (
+        <Fetching />
+      ) : users.length === 2 && sortUser === "firstName" ? (
+        <Fetching />
+      ) : null}
       <div className="tab">
-        {filterUsers.length === 0 && !isFetching ? (
+        {users.length === 0 && !isFetching ? (
           <ErrorSearch />
-        ) : sortUser === 'firstName' ? (
-          filterUsers.map((users, index) => <User key={index} users={users} />)
+        ) : sortUser === "firstName" ? (
+          users.map((users, index) => <User key={index} users={users} />)
+        ) : users[1].length === 0 && users[0].length === 0 ? (
+          <ErrorSearch />
         ) : (
-          <AllSortBd filterUsers={filterUsers} />
+          <AllSortBd users={users} />
         )}
       </div>
     </>
@@ -24,10 +32,10 @@ const All = ({ errorAllUsers, filterUsers, isFetching, sortUser }) => {
 };
 export default All;
 
-const AllSortBd = ({ filterUsers }) => {
-  return (
+const AllSortBd = ({ users }) => {
+  return users.length === 2 ? (
     <>
-      {filterUsers[0].map((users, index) => (
+      {users[0].map((users, index) => (
         <User key={index} users={users} />
       ))}
       <div className="divider-sort">
@@ -35,9 +43,11 @@ const AllSortBd = ({ filterUsers }) => {
         <div className="divider-sort__text">2022</div>
         <div className="divider-sort__line"></div>
       </div>
-      {filterUsers[1].map((users, index) => (
+      {users[1].map((users, index) => (
         <User key={index} users={users} birthday={users.birthday} />
       ))}
     </>
+  ) : (
+    <Fetching />
   );
 };

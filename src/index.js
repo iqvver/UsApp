@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './css/bootstrap-reboot.min.css';
+//import './css/bootstrap-reboot.min.css';
 import './css/index.min.css';
 import store from './redux/redux-store';
 import { Provider } from 'react-redux';

@@ -10,7 +10,11 @@ import Managers from "./Tabs/Managers";
 import loop from "../../Assets/icons/loop.svg";
 import bar from "../../Assets/icons/bar.svg";
 import barBlue from "../../Assets/icons/barBlue.svg";
-import { getUsers, newSearchUs } from "../../redux/users-reduser";
+import {
+  getUsers,
+  newSearchUser,
+  newSortUsers,
+} from "../../redux/users-reduser";
 import {
   getFilteredDesigners,
   getFilteredAnalytics,
@@ -20,9 +24,15 @@ import {
 } from "../../redux/filter-reduser";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { getDayOfYear, dateToYMD } from "../../utils";
 
 const SearchContainer = (props) => {
+  const [modalActive, showActiv] = React.useState(false);
+  const [sortUser, sortShow] = React.useState(props.sortUsers);
+  const [name, setName] = React.useState(props.searchUserName);
+  let handleChange = (event) => {
+    setName(event.target.value);
+    newSearchUser(event.target.value);
+  };
   React.useEffect(() => {
     props.getUsers();
     props.getFilteredDesigners();
@@ -30,15 +40,11 @@ const SearchContainer = (props) => {
     props.getFilteredManagement();
     props.getFilteredIos();
     props.getFilteredAndroid();
-    props.newSearchUs();
-  }, []);
-  const [modalActive, showActiv] = React.useState(false);
-  const [sortUser, sortShow] = React.useState("firstName");
-  const [name, setName] = React.useState(props.usName);
-  let handleChange = (event) => {
-    newSearchUs(event.target.value);
-    setName(event.target.value);
-  };
+    props.newSearchUser(name);
+    props.newSortUsers(sortUser);
+  }, [name, sortUser]);
+
+  /* простой вариант сортировки на в компоненте
   let filterUsers = props.users.filter((user) => {
     return (
       user.firstName.toLowerCase().includes(name.toLowerCase()) ||
@@ -71,6 +77,7 @@ const SearchContainer = (props) => {
             },
             [[], []]
           );
+  */
 
   return (
     <div className="container">
@@ -89,12 +96,13 @@ const SearchContainer = (props) => {
         <Routes>
           <Route
             path="/*"
+            exact
             element={
               <All
-                filterUsers={filterUsers}
+                users={props.users}
                 isFetching={props.isFetching}
                 errorAllUsers={props.errorAllUsers}
-                sortUser={sortUser}
+                sortUser={props.sortUsers}
               />
             }
           />
@@ -121,15 +129,19 @@ const SearchContainer = (props) => {
 let mapStateToProps = (state) => {
   return {
     users: state.usersPage.users,
-    errorAllUsers: state.usersPage.errorAllUsers,
+    searchUserName: state.usersPage.searchUserName,
+    newSearchUser: state.usersPage.newSearchUser,
     isFetching: state.usersPage.isFetching,
+
+    sortUsers: state.usersPage.sortUsers,
+    newSortUsers: state.usersPage.newSortUsers,
+
+    errorAllUsers: state.usersPage.errorAllUsers,
     designers: state.filterPage.designers,
     analytics: state.filterPage.analytics,
     management: state.filterPage.management,
     ios: state.filterPage.ios,
     android: state.filterPage.android,
-    usName: state.usersPage.usName,
-    newSearchUs: state.usersPage.newSearchUs,
   };
 };
 export default compose(
@@ -140,6 +152,7 @@ export default compose(
     getFilteredManagement,
     getFilteredIos,
     getFilteredAndroid,
-    newSearchUs,
+    newSearchUser,
+    newSortUsers,
   })
 )(SearchContainer);
