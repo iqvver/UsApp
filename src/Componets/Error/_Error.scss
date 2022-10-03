@@ -33,7 +33,7 @@
         font-weight: 400;
         font-size: 16px;
         line-height: 20px;
-        color: #97979B;
+        color: $sub-color;
     }
 
     &__refresh {
@@ -41,7 +41,7 @@
         font-weight: 600;
         font-size: 16px;
         line-height: 20px;
-        color: #6534FF;
+        color: $main-color;
         cursor: pointer;
     }
 }

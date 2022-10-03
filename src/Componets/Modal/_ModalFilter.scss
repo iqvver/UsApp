@@ -59,13 +59,13 @@
         height: 15px;
         width: 15px;
         border-radius: 100%;
-        border: 2px solid #6534FF;
+        border: 2px solid $main-color;
         background-color: #FFFFFF;
         line-height: normal;
         padding: auto;
 
         &_active {
-            outline: 5px solid #6534FF;
+            outline: 5px solid $main-color;
         }
     }
 }
