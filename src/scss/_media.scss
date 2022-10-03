@@ -1,0 +1,33 @@
+@media (max-width: 1200px) {}
+
+@media (max-width: 991px) {}
+
+@media (max-width: 767px) {}
+
+@media (max-width: 576px) {
+    .search {
+        &__nav {
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+    }
+}
+
+@media (max-width: 350px) {
+    .user {
+
+        &__descr {}
+
+        &__data {
+            justify-content: flex-start;
+        }
+    }
+
+    .divider {
+        display: none;
+    }
+
+    .divider-sort {
+        margin: 0px 0 20px 0;
+    }
+}
