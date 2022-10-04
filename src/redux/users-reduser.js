@@ -10,7 +10,7 @@ const IS_USERS_SORT = 'IS_USERS_SORT';
 // иноциализация переменных
 let initialState = {
     users: [], // массив пользователей
-    errorAllUsers: "", // ошибка при загрузке все пользователей
+    errorAllUsers: false, // ошибка при загрузке все пользователей
     isFetching: false, // загрузка
     searchUserName: '',
     sortUsers: 'firstName',
@@ -114,7 +114,7 @@ export const getUsers = () => {
             dispatch(setUsersAC(data.data.items));
             dispatch(setIsFetchingAC(false));
         } else {
-            dispatch(setErrorAC(data.message));
+            dispatch(setErrorAC(true));
         }
     }
 }

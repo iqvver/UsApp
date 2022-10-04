@@ -63,40 +63,40 @@ export const getFilteredDesigners = () => {
     return async (dispatch) => {
         dispatch(setIsFetchingAC(true));
         let data = await filterUserAPI.getDesignUser();
-        dispatch(setIsFetchingAC(false));
         dispatch(setFilteredDesignersAC(data.data.items));
+        dispatch(setIsFetchingAC(false));
     }
 }
 export const getFilteredAnalytics = () => {
     return async (dispatch) => {
         dispatch(setIsFetchingAC(true));
         let data = await filterUserAPI.getAnalyticsUser();
-        dispatch(setIsFetchingAC(false));
         dispatch(setFilteredAnalyticsAC(data.data.items));
+        dispatch(setIsFetchingAC(false));
     }
 }
 export const getFilteredManagement = () => {
     return async (dispatch) => {
         dispatch(setIsFetchingAC(true));
         let data = await filterUserAPI.getManagementUser();
-        dispatch(setIsFetchingAC(false));
         dispatch(setFilteredManagementAC(data.data.items));
+        dispatch(setIsFetchingAC(false));
     }
 }
 export const getFilteredIos = () => {
     return async (dispatch) => {
         dispatch(setIsFetchingAC(true));
         let data = await filterUserAPI.getIosUser();
-        dispatch(setIsFetchingAC(false));
         dispatch(setFilteredIosAC(data.data.items));
+        dispatch(setIsFetchingAC(false));
     }
 }
 export const getFilteredAndroid = () => {
     return async (dispatch) => {
         dispatch(setIsFetchingAC(true));
         let data = await filterUserAPI.getAandroidUser();
-        dispatch(setIsFetchingAC(false));
         dispatch(setFilteredAndroidAC(data.data.items));
+        dispatch(setIsFetchingAC(false));
     }
 }
 

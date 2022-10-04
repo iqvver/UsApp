@@ -1,0 +1,64 @@
+.loading {
+    padding: 22px 16px 22px 16px;
+
+    &__wrapper {
+        display: flex;
+        width: 235px;
+        height: 72px;
+        position: relative; // Это важно добавить 
+        overflow-x: hidden; // Это важно добавить
+    }
+
+    &__img {
+        width: 72px;
+        height: 72px;
+        background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
+        border-radius: 50px;
+    }
+
+    &__descr {
+        width: 72px;
+        margin-left: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__title {
+        width: 144px;
+        height: 16px;
+        background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
+        border-radius: 50px;
+    }
+
+    &__subtitle {
+        margin-top: 6px;
+        width: 80px;
+        height: 12px;
+        background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
+        border-radius: 50px;
+    }
+}
+
+.flare {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 45px;
+    transform: skewX(-45deg); // Наклон
+    animation: flareAnimation;
+    left: -150%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1));
+    animation: flareAnimation 3s infinite linear; // Время и тип анимации можно менять
+    
+}
+
+@keyframes flareAnimation {
+    0% {
+        left: -150%;
+    }
+
+    100% {
+        left: 150%;
+    }
+}

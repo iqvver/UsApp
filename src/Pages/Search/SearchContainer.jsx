@@ -24,6 +24,7 @@ import {
 } from "../../redux/filter-reduser";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import Loading from "../../Componets/Fetching/Loading";
 
 const SearchContainer = (props) => {
   const [modalActive, showActiv] = React.useState(false);
