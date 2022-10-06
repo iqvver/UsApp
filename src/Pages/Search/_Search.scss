@@ -90,8 +90,31 @@
             line-height: 20px;
             color: $sub-color;
             z-index: 2;
+            position: relative;
+
+            &:after {
+                display: block;
+                content: "";
+                height: 1px;
+                width: 0%;
+                left: 50%;
+                background-color: $main-color;
+                position: absolute;
+                -webkit-transition: width .3s ease-in-out;
+                -moz--transition: width .3s ease-in-out;
+                transition: width .3s ease-in-out;
+                -webkit-transform: translateX(-50%);
+                -moz-transform: translateX(-50%);
+                transform: translateX(-50%);
+            }
+
+            &:hover:after,
+            &a:focus:after {
+                width: 100%;
+            }
         }
     }
+
 
     &__item {
         padding: 0 10px 0 10px;

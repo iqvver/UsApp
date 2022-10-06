@@ -19,6 +19,22 @@ export const dateToYMD = (date) => {
     return "" + (month <= 9 ? "0" + month : month) + "-" + (day <= 9 ? "0" + day : day);
 }
 
+//вычисление количества лет выбранногопользователя
+export const getNumberOfYears = (userProfile) => {
+    var now = new Date(); //Текущя дата
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate()); //Текущя дата без времени
+    var dob = new Date(userProfile[0].birthday); //Дата рождения
+    var dobnow = new Date(today.getFullYear(), dob.getMonth(), dob.getDate()); //ДР в текущем году
+    //Возраст = текущий год - год рождения
+    let age = today.getFullYear() - dob.getFullYear();
+    //Если ДР в этом году ещё предстоит, то вычитаем из age один год
+    if (today < dobnow) {
+        age = age - 1;
+    }
+    return age;
+};
+
+// перезакрузка страници
 export const reload = () => {
     window.location.reload();
 };

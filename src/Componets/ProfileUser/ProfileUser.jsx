@@ -1,21 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { getNumberOfYears } from "../../utils";
 
 //страница детали
-
 const ProfileUser = ({ star, phone, chevron, userProfile }) => {
   const navigate = useNavigate();
-  var now = new Date(); //Текущя дата
-  var today = new Date(now.getFullYear(), now.getMonth(), now.getDate()); //Текущя дата без времени
-  var dob = new Date(userProfile[0].birthday); //Дата рождения
-  var dobnow = new Date(today.getFullYear(), dob.getMonth(), dob.getDate()); //ДР в текущем году
-  var age; //Возраст
-  //Возраст = текущий год - год рождения
-  age = today.getFullYear() - dob.getFullYear();
-  //Если ДР в этом году ещё предстоит, то вычитаем из age один год
-  if (today < dobnow) {
-    age = age - 1;
-  }
   return (
     <div className="profile">
       <div className="container">
@@ -42,7 +31,7 @@ const ProfileUser = ({ star, phone, chevron, userProfile }) => {
           <div className="profile__age">
             <img src={star} alt="star" />
             <div className="profile__age-data">{userProfile[0].birthday}</div>
-            <div className="profile__age-day">{age} лет</div>
+            <div className="profile__age-day">{getNumberOfYears(userProfile)} лет</div>
           </div>
           <div className="profile__phone">
             <img src={phone} alt="phone" />

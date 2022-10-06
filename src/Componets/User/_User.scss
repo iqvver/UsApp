@@ -2,6 +2,16 @@
     margin-top: 12px;
     width: 100%;
 
+    &:hover {
+        background: darken($subcolor-bg, 1.5%);
+        border: 1px solid rgba(#000, .05);
+        box-shadow: 1px 1px 2px rgba($subcolor-bg, .2);
+        color: lighten($subcolor-bg, 18%);
+        text-decoration: none;
+        text-shadow: -1px -1px 0 darken($subcolor-bg, 9.5%);
+        transition: all .4s linear;
+    }
+
     a {
         display: flex;
         align-items: center;

@@ -44,7 +44,7 @@ const usersReducer = (state = initialState, action) => {
                         return 1
                     return 0
                 })
-                //если выбран фильтр "дню рождения"
+                    //если выбран фильтр "дню рождения"
                     : action.usersList.filter((user) => {
                         if (state.searchUserName) {
                             return (
@@ -64,10 +64,12 @@ const usersReducer = (state = initialState, action) => {
                     )
                         .reduce(
                             (acc, elem) => {
+                                //если номер дня рожения меньше текущего то 
                                 if (
                                     getDayOfYear(new Date(elem.birthday)) < getDayOfYear(new Date())
                                 ) {
                                     acc[1].push(elem);
+                                    //если номер дня рожения больще текущего то 
                                 } else {
                                     acc[0].push(elem);
                                 }
