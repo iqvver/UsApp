@@ -3,17 +3,17 @@ import { getDayOfYear, dateToYMD } from "../utils";
 
 const SET_USERS = 'SET_USERS'; // перенная для получения всех пользователей
 const SET_ERROR = 'SET_ERROR'; // ошибка
-const IS_FETCHING = 'IS_FETCHING';
-const IS_USERS_SEARCH = 'IS_USERS_SEARCH';
-const IS_USERS_SORT = 'IS_USERS_SORT';
+const IS_FETCHING = 'IS_FETCHING'; //загрузка
+const IS_USERS_SEARCH = 'IS_USERS_SEARCH'; // поиск пользователей
+const IS_USERS_SORT = 'IS_USERS_SORT'; // сортировка пользователей
 
 // иноциализация переменных
 let initialState = {
-    users: [], // массив пользователей
+    usersList: [], // массив пользователей
     errorAllUsers: false, // ошибка при загрузке все пользователей
     isFetching: false, // загрузка
-    searchUserName: '',
-    sortUsers: 'firstName',
+    searchUserName: '', // параметр поиска
+    sortUsers: 'firstName', // параметр сортировки по умолчанию по имени
 };
 
 // редьюсер получения массива пользователей
@@ -21,17 +21,20 @@ const usersReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case SET_USERS: {
-            // получение пользователей 
+            // получение пользователей, фильтрация и сортировка списка
             return {
-                ...state, users: state.sortUsers === 'firstName' ? action.users.filter((user) => {
+                ...state, usersList: state.sortUsers === 'firstName' ? action.usersList.filter((user) => {
+                    //если выбран фильтр "поалфавиту"
                     if (state.searchUserName) {
+                        //фильтрация списка пользователей
                         return (
                             user.firstName.toLowerCase().includes(state.searchUserName.toLowerCase()) ||
                             user.lastName.toLowerCase().includes(state.searchUserName.toLowerCase()) ||
                             user.userTag.toLowerCase().includes(state.searchUserName.toLowerCase())
                         );
                     }
-                    return action.users;
+                    return action.usersList;
+                    // и сортировка  по имени
                 }).sort(function (a, b) {
                     var nameA = a.firstName.toLowerCase(),
                         nameB = b.firstName.toLowerCase()
@@ -41,7 +44,8 @@ const usersReducer = (state = initialState, action) => {
                         return 1
                     return 0
                 })
-                    : action.users.filter((user) => {
+                //если выбран фильтр "дню рождения"
+                    : action.usersList.filter((user) => {
                         if (state.searchUserName) {
                             return (
                                 user.firstName.toLowerCase().includes(state.searchUserName.toLowerCase()) ||
@@ -49,7 +53,8 @@ const usersReducer = (state = initialState, action) => {
                                 user.userTag.toLowerCase().includes(state.searchUserName.toLowerCase())
                             );
                         }
-                        return action.users;
+                        return action.usersList;
+                        //и сортировка. список отображается от ближайшей даты дня рождения вниз.
                     }).sort((a, b) =>
                         dateToYMD(new Date(a.birthday)) >
                             dateToYMD(new Date(b.birthday)) >
@@ -78,11 +83,11 @@ const usersReducer = (state = initialState, action) => {
             return { ...state, errorAllUsers: action.errorAllUsers }
         }
         case IS_USERS_SEARCH: {
-            // получение пользователей 
+            // получение параметров поиска 
             return { ...state, searchUserName: action.searchUserName }
         }
         case IS_USERS_SORT: {
-            // получение пользователей 
+            // получение параметров сортировки 
             return { ...state, sortUsers: action.sortUsers }
         }
 
@@ -97,14 +102,14 @@ const usersReducer = (state = initialState, action) => {
 }
 
 // экшен для получения юзеров
-export const setUsersAC = (users) => ({ type: SET_USERS, users });
+export const setUsersAC = (usersList) => ({ type: SET_USERS, usersList });
 export const setUserSearchAC = (searchUserName) => ({ type: IS_USERS_SEARCH, searchUserName });
 export const setSortUserhAC = (sortUsers) => ({ type: IS_USERS_SORT, sortUsers });
 export const setErrorAC = (errorAllUsers) => ({ type: SET_ERROR, errorAllUsers });
 // экшен загрузки
 export const setIsFetchingAC = (isFetching) => ({ type: IS_FETCHING, isFetching })
 
-// получение, обработка и отправка профилей
+// получение, обработка пареметров
 // ассинхронный экшен
 export const getUsers = () => {
     return async (dispatch) => {
@@ -118,9 +123,11 @@ export const getUsers = () => {
         }
     }
 }
+//полечение параметра поиска
 export const newSearchUser = (searchUserName) => (dispatch) => {
     dispatch(setUserSearchAC(searchUserName));
 }
+//полечение параметра сортировки
 export const newSortUsers = (sortUsers) => (dispatch) => {
     dispatch(setSortUserhAC(sortUsers));
 }

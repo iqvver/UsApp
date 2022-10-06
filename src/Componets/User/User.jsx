@@ -2,18 +2,19 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import userPhoto from "../../Assets/image/gus.svg";
 
-const User = ({ users, birthday }) => {
-  //console.log(new Date(birthday).toLocaleString('en-us',{month:'short', day:'numeric'}));
+// компонент пользователь
+
+const User = ({ user, birthday }) => {
   return (
     <div className="user">
-      <NavLink to={`/profile/${users.id}`}>
+      <NavLink to={`/profile/${user.id}`}>
         <div className="user__img">
-          <img src={users.avatarUrl} alt={userPhoto} />
+          <img src={user.avatarUrl} alt={userPhoto} />
         </div>
         <div className="user__descr">
           <div className="user__name">
-            {users.firstName} {""}
-            {users.lastName} <span>{users.userTag}</span>
+            {user.firstName} {""}
+            {user.lastName} <span>{user.userTag}</span>
           </div>
           {birthday ? (
             <div className="user__data">
@@ -25,7 +26,7 @@ const User = ({ users, birthday }) => {
           ) : (
             <div></div>
           )}
-          <div className="user__team">{users.department}</div>
+          <div className="user__team">{user.department}</div>
         </div>
       </NavLink>
     </div>

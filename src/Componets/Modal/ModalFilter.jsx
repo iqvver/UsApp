@@ -1,11 +1,15 @@
 import React from "react";
 import close from "../../Assets/icons/close.svg";
 
+// модальное окно для переключения режима сортировки
+
 const ModalFilter = ({ showActiv, sortShow, sortUser }) => {
+  //хук сортировки поимени
   let setSortFirstName = () => {
     sortShow("firstName");
     showActiv(false);
   };
+  //хук сортировки по днюрождения
   let setSortBirtday = () => {
     sortShow("birthday");
     showActiv(false);
@@ -21,7 +25,9 @@ const ModalFilter = ({ showActiv, sortShow, sortUser }) => {
       <div className="modal__body">
         <div
           className={
-            sortUser === "firstName" ? "modal__btm modal__btm_active" : "modal__btm"
+            sortUser === "firstName"
+              ? "modal__btm modal__btm_active"
+              : "modal__btm"
           }
           onClick={() => setSortFirstName()}
         >
@@ -29,7 +35,9 @@ const ModalFilter = ({ showActiv, sortShow, sortUser }) => {
         </div>
         <div
           className={
-            sortUser === "birthday" ? "modal__btm modal__btm_active" : "modal__btm"
+            sortUser === "birthday"
+              ? "modal__btm modal__btm_active"
+              : "modal__btm"
           }
           onClick={() => setSortBirtday()}
         >

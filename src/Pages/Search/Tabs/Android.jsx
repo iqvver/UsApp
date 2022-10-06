@@ -2,13 +2,14 @@ import React from "react";
 import Fetching from "../../../Componets/Fetching/Fetching";
 import User from "../../../Componets/User/User";
 
-const Android = ({ android }) => {
+//страница департамента андройд
+const Android = ({ androidList }) => {
   return (
     <>
-      {android.length === 0 ? <Fetching /> : null}
+      {androidList.length === 0 ? <Fetching /> : null}
       <div className="tab">
-        {android.map((users, index) => (
-          <User key={index} users={users} />
+        {androidList.map((user, index) => (
+          <User key={index} user={user} />
         ))}
       </div>
     </>

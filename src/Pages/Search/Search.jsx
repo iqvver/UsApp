@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import ModalFilter from "../../Componets/Modal/ModalFilter";
 import NetworkError from "../../Componets/NetworkError/NetworkError";
+
+//компонента находится вверху экрана с поле для поиска с иконкой «Поиск», кнопкой «Сортировка» и панелью вкладок.
 const Search = ({
   loop,
   bar,
@@ -26,34 +28,35 @@ const Search = ({
       </div>
       <div className="container">
         <div className="search">
-          {isOnline ?
-          <div className="search__wrapper">
-            <div className="search__title">Поиск</div>
-            <div className="search__form">
-              <img src={loop} alt="loop" className="search__form-loop" />
-              <div className="search__form-input">
-                <input
-                  onChange={(event) => handleChange(event)}
-                  name="search"
-                  id="search"
-                  value={name}
-                  type="text"
-                  placeholder="Введи имя, тег..."
-                />
-              </div>
-              <div className="search__form-btn">
-                <button onClick={() => showActiv(true)}>
-                  <img
-                    className="search__form-btn__img search__form-btn__img_active"
-                    src={sortUser === "birthday" ? barBlue : bar}
-                    alt="bar"
+          {isOnline ? (
+            <div className="search__wrapper">
+              <div className="search__title">Поиск</div>
+              <div className="search__form">
+                <img src={loop} alt="loop" className="search__form-loop" />
+                <div className="search__form-input">
+                  <input
+                    onChange={(event) => handleChange(event)}
+                    name="search"
+                    id="search"
+                    value={name}
+                    type="text"
+                    placeholder="Введи имя, тег..."
                   />
-                </button>
+                </div>
+                <div className="search__form-btn">
+                  <button onClick={() => showActiv(true)}>
+                    <img
+                      className="search__form-btn__img search__form-btn__img_active"
+                      src={sortUser === "birthday" ? barBlue : bar}
+                      alt="bar"
+                    />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          : <NetworkError />
-}
+          ) : (
+            <NetworkError />
+          )}
           <div className="search__nav">
             <NavLink
               to={"all"}

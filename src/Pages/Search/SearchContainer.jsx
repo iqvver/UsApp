@@ -26,7 +26,12 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { reload } from "../../utils";
 
+//контейнерная компонента (HOС) для получения списка пользователей,
+//переход меджу вкладками(департаментами)и сортировкой меджу ними
+//получение всех паретров для отрисовки
+
 const SearchContainer = (props) => {
+  //хуки обработки нействий и состояний компонетов
   const [isOnline, setNetwork] = React.useState(window.navigator.onLine);
   const [modalActive, showActiv] = React.useState(false);
   const [sortUser, sortShow] = React.useState(props.sortUsers);
@@ -46,6 +51,7 @@ const SearchContainer = (props) => {
     props.newSortUsers(sortUser);
   }, [name, sortUser]);
 
+  //хук отслеживания состояния сети
   const updateNetwork = () => {
     setNetwork(window.navigator.onLine);
     reload();
@@ -94,28 +100,30 @@ const SearchContainer = (props) => {
           );
   */
 
+  //отрисовка поля для поиска с иконкой «Поиск», кнопкой «Сортировка»
+  //и панелью вкладок. При переключении между вкладками на главном экране
   return (
     <div className="container">
       <div className="container-wrapper">
-          <Search
-            loop={loop}
-            bar={bar}
-            barBlue={barBlue}
-            showActiv={showActiv}
-            sortShow={sortShow}
-            sortUser={sortUser}
-            modalActive={modalActive}
-            name={name}
-            handleChange={handleChange}
-            isOnline={isOnline}
-          />
+        <Search
+          loop={loop}
+          bar={bar}
+          barBlue={barBlue}
+          showActiv={showActiv}
+          sortShow={sortShow}
+          sortUser={sortUser}
+          modalActive={modalActive}
+          name={name}
+          handleChange={handleChange}
+          isOnline={isOnline}
+        />
         <Routes>
           <Route
             path="/*"
             exact
             element={
               <All
-                users={props.users}
+                usersList={props.usersList}
                 isFetching={props.isFetching}
                 errorAllUsers={props.errorAllUsers}
                 sortUser={props.sortUsers}
@@ -124,17 +132,20 @@ const SearchContainer = (props) => {
           />
           <Route
             path="analysts"
-            element={<Analysts analytics={props.analytics} />}
+            element={<Analysts analyticsList={props.analyticsList} />}
           />
-          <Route path="android" element={<Android android={props.android} />} />
+          <Route
+            path="android"
+            element={<Android androidList={props.androidList} />}
+          />
           <Route
             path="designers"
-            element={<Designers designers={props.designers} />}
+            element={<Designers designersList={props.designersList} />}
           />
-          <Route path="ios" element={<Ios ios={props.ios} />} />
+          <Route path="ios" element={<Ios iosList={props.iosList} />} />
           <Route
             path="managers"
-            element={<Managers management={props.management} />}
+            element={<Managers managementList={props.managementList} />}
           />
         </Routes>
       </div>
@@ -142,22 +153,28 @@ const SearchContainer = (props) => {
   );
 };
 
+//получение данных из стейта
 let mapStateToProps = (state) => {
   return {
-    users: state.usersPage.users,
+    //данные о пользователях
+    usersList: state.usersPage.usersList,
     searchUserName: state.usersPage.searchUserName,
     newSearchUser: state.usersPage.newSearchUser,
     isFetching: state.usersPage.isFetching,
 
+    //данные о сортировке пользователей
     sortUsers: state.usersPage.sortUsers,
     newSortUsers: state.usersPage.newSortUsers,
 
+    // ошибка
     errorAllUsers: state.usersPage.errorAllUsers,
-    designers: state.filterPage.designers,
-    analytics: state.filterPage.analytics,
-    management: state.filterPage.management,
-    ios: state.filterPage.ios,
-    android: state.filterPage.android,
+
+    //данные о департиментах
+    designersList: state.filterPage.designersList,
+    analyticsList: state.filterPage.analyticsList,
+    managementList: state.filterPage.managementList,
+    iosList: state.filterPage.iosList,
+    androidList: state.filterPage.androidList,
   };
 };
 export default compose(

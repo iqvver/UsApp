@@ -2,13 +2,14 @@ import React from "react";
 import Fetching from "../../../Componets/Fetching/Fetching";
 import User from "../../../Componets/User/User";
 
-const iOS = ({ ios }) => {
+//страница департамента айос
+const iOS = ({ iosList }) => {
   return (
     <>
-      {ios.length === 0 ? <Fetching /> : null}
+      {iosList.length === 0 ? <Fetching /> : null}
       <div className="tab">
-        {ios.map((users, index) => (
-          <User key={index} users={users} />
+        {iosList.map((user, index) => (
+          <User key={index} user={user} />
         ))}
       </div>
     </>

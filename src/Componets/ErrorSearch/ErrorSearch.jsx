@@ -1,6 +1,8 @@
 import React from "react";
 import errorImg from "../../Assets/icons/errorLoop.svg";
 
+//компонента появляется если пользователь не найден
+
 const ErrorSearch = () => {
   return (
     <div className="error">

@@ -1,5 +1,6 @@
 import * as axios from "axios";
 
+// компонент Api в котором формируется запрос на сервер и получает ответ
 // базовый адрес запроса на сервер
 const instance = axios.create({
     withCredentials: false,
@@ -11,10 +12,11 @@ const instance = axios.create({
 export const userAPI = {
     getUsers() {
         return instance.get(`users?__example=all`)
+            // Запрос выполнен, и сервер ответил все ок
             .then(response => { return response })
             .catch((error) => {
                 if (error) {
-                    // Request made and server responded error
+                    // Запрос выполнен, и сервер ответил ошибкой
                     console.log('ошибка', error.message);
                     return error
                 }
@@ -27,10 +29,11 @@ export const userAPI = {
 export const profileAPI = {
     getProfile(userId) {
         return instance.get(`users?__` + userId)
+            // Запрос выполнен, и сервер ответил все ок
             .then(response => { return response })
             .catch((error) => {
                 if (error) {
-                    // Request made and server responded error
+                    // Запрос выполнен, и сервер ответил ошибкой
                     console.log('ошибка', error.message);
                     return error
                 }
@@ -41,10 +44,11 @@ export const profileAPI = {
 export const filterUserAPI = {
     getDesignUser() {
         return instance.get(`users?__example=design`)
+            // Запрос выполнен, и сервер ответил все ок
             .then(response => { return response })
             .catch((error) => {
                 if (error) {
-                    // Request made and server responded error
+                    // Запрос выполнен, и сервер ответил ошибкой
                     console.log('ошибка', error.message);
                     return error
                 }
@@ -53,10 +57,11 @@ export const filterUserAPI = {
     },
     getAnalyticsUser() {
         return instance.get(`users?__example=analytics`)
+            // Запрос выполнен, и сервер ответил все ок
             .then(response => { return response })
             .catch((error) => {
                 if (error) {
-                    // Request made and server responded error
+                    // Запрос выполнен, и сервер ответил ошибкой
                     console.log('ошибка', error.message);
                     return error
                 }
@@ -65,10 +70,11 @@ export const filterUserAPI = {
     },
     getManagementUser() {
         return instance.get(`users?__example=management`)
+            // Запрос выполнен, и сервер ответил все ок
             .then(response => { return response })
             .catch((error) => {
                 if (error) {
-                    // Request made and server responded error
+                    // Запрос выполнен, и сервер ответил ошибкой
                     console.log('ошибка', error.message);
                     return error
                 }
@@ -77,10 +83,11 @@ export const filterUserAPI = {
     },
     getIosUser() {
         return instance.get(`users?__example=ios`)
+            // Запрос выполнен, и сервер ответил все ок
             .then(response => { return response })
             .catch((error) => {
                 if (error) {
-                    // Request made and server responded error
+                    // Запрос выполнен, и сервер ответил ошибкой
                     console.log('ошибка', error.message);
                     return error
                 }
@@ -89,10 +96,11 @@ export const filterUserAPI = {
     },
     getAandroidUser() {
         return instance.get(`users?__example=android`)
+            // Запрос выполнен, и сервер ответил все ок
             .then(response => { return response })
             .catch((error) => {
                 if (error) {
-                    // Request made and server responded error
+                    // Запрос выполнен, и сервер ответил ошибкой
                     console.log('ошибка', error.message);
                     return error
                 }

@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+//страница детали
+
 const ProfileUser = ({ star, phone, chevron, userProfile }) => {
   const navigate = useNavigate();
   var now = new Date(); //Текущя дата

@@ -2,13 +2,14 @@ import React from "react";
 import Fetching from "../../../Componets/Fetching/Fetching";
 import User from "../../../Componets/User/User";
 
-const Analysts = ({ analytics }) => {
+//страница департамента аналитиков
+const Analysts = ({ analyticsList }) => {
   return (
     <>
-      {analytics.length === 0 ? <Fetching /> : null}
+      {analyticsList.length === 0 ? <Fetching /> : null}
       <div className="tab">
-        {analytics.map((users, index) => (
-          <User key={index} users={users} />
+        {analyticsList.map((user, index) => (
+          <User key={index} user={user} />
         ))}
       </div>
     </>

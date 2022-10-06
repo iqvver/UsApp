@@ -16,7 +16,7 @@ const profileReducer = (state = initialState, action) => {
             return { ...state, userProfile: action.userProfile }
         }
         case SET_ERROR: {
-            // получение пользователей 
+            // если ошибка 
             return { ...state, errorProfileUser: action.errorProfileUser }
         }
         default:

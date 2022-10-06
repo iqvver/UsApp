@@ -1,43 +1,43 @@
-import { filterUserAPI } from '../Api/Api'
+import { filterUserAPI } from '../Api/Api'; //получение данныхиз Api
 
 const SET_DESIGN = 'SET_DESIGN'; // перенная для получения профиля пользователя
 const SET_ANALYTICS = 'SET_ANALYTICS'; // перенная для получения профиля пользователя
 const SET_MANAGEMENT = 'SET_MANAGEMENT'; // перенная для получения профиля пользователя
 const SET_IOS = 'SET_IOS'; // перенная для получения профиля пользователя
 const SET_ANDROID = 'SET_ANDROID'; // перенная для получения профиля пользователя
-const IS_FETCHING = 'IS_FETCHING';
+const IS_FETCHING = 'IS_FETCHING'; // загрузка
 
 // иноциализация переменных
 let initialState = {
-    designers: [], // переменная профиля 
-    analytics: [], // переменная профиля 
-    management: [], // переменная профиля 
-    ios: [], // переменная профиля 
-    android: [], // переменная профиля 
+    designersList: [], // переменная департамента 
+    analyticsList: [], // переменная департамента 
+    managementList: [], // переменная департамента 
+    iosList: [], // переменная департамента 
+    androidList: [], // переменная департамента 
     isFetching: false, // загрузка
 };
 // редьюсер профиля пользователя
 const filterReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_DESIGN: {
-            // получение профиля пользователя
-            return { ...state, designers: action.designers }
+            // получение пользователей департамента
+            return { ...state, designersList: action.designersList }
         }
         case SET_ANALYTICS: {
-            // получение профиля пользователя
-            return { ...state, analytics: action.analytics }
+            // получение пользователей департамента
+            return { ...state, analyticsList: action.analyticsList }
         }
         case SET_MANAGEMENT: {
-            // получение профиля пользователя
-            return { ...state, management: action.management }
+            // получение пользователей департамента
+            return { ...state, managementList: action.managementList }
         }
         case SET_IOS: {
-            // получение профиля пользователя
-            return { ...state, ios: action.ios }
+            // получение пользователей департамента
+            return { ...state, iosList: action.iosList }
         }
         case SET_ANDROID: {
-            // получение профиля пользователя
-            return { ...state, android: action.android }
+            // получение пользователей департамента
+            return { ...state, androidList: action.androidList }
         }
         case IS_FETCHING: {
             // загрузка on/off
@@ -49,11 +49,11 @@ const filterReducer = (state = initialState, action) => {
 }
 
 // экшен для получение профиля 
-export const setFilteredDesignersAC = (designers) => ({ type: SET_DESIGN, designers });
-export const setFilteredAnalyticsAC = (analytics) => ({ type: SET_ANALYTICS, analytics });
-export const setFilteredManagementAC = (management) => ({ type: SET_MANAGEMENT, management });
-export const setFilteredIosAC = (ios) => ({ type: SET_IOS, ios });
-export const setFilteredAndroidAC = (android) => ({ type: SET_ANDROID, android });
+export const setFilteredDesignersAC = (designersList) => ({ type: SET_DESIGN, designersList });
+export const setFilteredAnalyticsAC = (analyticsList) => ({ type: SET_ANALYTICS, analyticsList });
+export const setFilteredManagementAC = (managementList) => ({ type: SET_MANAGEMENT, managementList });
+export const setFilteredIosAC = (iosList) => ({ type: SET_IOS, iosList });
+export const setFilteredAndroidAC = (androidList) => ({ type: SET_ANDROID, androidList });
 export const setIsFetchingAC = (isFetching) => ({ type: IS_FETCHING, isFetching })
 
 

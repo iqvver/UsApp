@@ -3,6 +3,8 @@ import SearchContainer from "./Pages/Search/SearchContainer";
 import { Routes, Route } from "react-router-dom";
 import ProfileUserContainer from "./Componets/ProfileUser/ProfileUserContainer";
 
+//компонента с роутами между главной стриницей и деталями пользователя
+
 function App() {
   return (
     <div className="App">

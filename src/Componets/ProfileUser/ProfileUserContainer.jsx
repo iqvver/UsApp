@@ -10,7 +10,12 @@ import { useParams } from "react-router-dom";
 import Fetching from "../Fetching/Fetching";
 import Error from "../Error/Error";
 
+//контейнерная компонента (HOС) для получения деталей выбранного пользователя
+//и всех паретров для ее отрисовки
+
 const ProfileUserContainer = (props) => {
+
+  //хук получения id пользователя
   let { userId } = useParams();
   React.useEffect(() => {
     props.getProfileUser(userId);
@@ -36,6 +41,7 @@ const ProfileUserContainer = (props) => {
   );
 };
 
+//получение данных из стейта
 let mapStateToProps = (state) => ({
   userProfile: state.profilePage.userProfile,
   errorProfileUser: state.profilePage.errorProfileUser,

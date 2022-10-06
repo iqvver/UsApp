@@ -1,5 +1,7 @@
 import React from "react";
 
+//компонента появляется если нет соединения с интернетом
+
 const NetworkError = () => {
   return (
     <div className="container">

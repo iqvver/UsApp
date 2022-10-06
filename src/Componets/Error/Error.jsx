@@ -2,6 +2,8 @@ import React from "react";
 import errorImg from "../../Assets/icons/error.svg";
 import { reload } from "../../utils";
 
+//компонента появляется если сервер ответил ошибкой
+
 const Error = () => {
   return (
     <div className="error">

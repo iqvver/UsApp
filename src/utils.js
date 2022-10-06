@@ -1,6 +1,10 @@
 /**
  * @param {Date} now 
  */
+
+//утилиты для работы с датами
+
+//вычисление номера тукущего дня
 export const getDayOfYear = (now) => {
     var start = new Date(now.getFullYear(), 0, 0)
     var diff = now - start
@@ -8,6 +12,7 @@ export const getDayOfYear = (now) => {
     return Math.floor(diff / oneDay)
 }
 
+//вычисление даты дня рождения
 export const dateToYMD = (date) => {
     var day = date.getDate();
     var month = date.getMonth() + 1;

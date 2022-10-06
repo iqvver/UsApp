@@ -2,13 +2,14 @@ import React from "react";
 import Fetching from "../../../Componets/Fetching/Fetching";
 import User from "../../../Componets/User/User";
 
-const Managers = ({ management }) => {
+//страница департамента менеджеров
+const Managers = ({ managementList }) => {
   return (
     <>
-      {!management ? <Fetching /> : null}
+      {!managementList ? <Fetching /> : null}
       <div className="tab">
-        {management.map((users, index) => (
-          <User key={index} users={users} />
+        {managementList.map((user, index) => (
+          <User key={index} user={user} />
         ))}
       </div>
     </>
