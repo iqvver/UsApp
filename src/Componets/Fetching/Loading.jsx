@@ -5,7 +5,7 @@ const Loading = () => {
   return (
     <>
       {[...Array(n)].map((e, i) => (
-        <LoadingForm />
+        <LoadingForm key={i} />
       ))}
     </>
   );

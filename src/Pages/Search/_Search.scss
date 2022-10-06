@@ -5,12 +5,32 @@
 }
 
 .search {
+    height: 105px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    &_error {
+        padding-left: 24px;
+        width: 1280px;
+        background-color: #F44336;
+    }
+
     &__title {
-        font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
         font-size: 24px;
         line-height: 28px;
+
+        &_error {
+            color: $color-white;
+        }
+    }
+
+    &__subtitle {
+        &_error {
+            color: $color-white;
+        }
     }
 
     &__form {

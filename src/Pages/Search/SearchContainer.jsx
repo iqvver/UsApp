@@ -24,9 +24,10 @@ import {
 } from "../../redux/filter-reduser";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import Loading from "../../Componets/Fetching/Loading";
+import { reload } from "../../utils";
 
 const SearchContainer = (props) => {
+  const [isOnline, setNetwork] = React.useState(window.navigator.onLine);
   const [modalActive, showActiv] = React.useState(false);
   const [sortUser, sortShow] = React.useState(props.sortUsers);
   const [name, setName] = React.useState(props.searchUserName);
@@ -44,6 +45,19 @@ const SearchContainer = (props) => {
     props.newSearchUser(name);
     props.newSortUsers(sortUser);
   }, [name, sortUser]);
+
+  const updateNetwork = () => {
+    setNetwork(window.navigator.onLine);
+    reload();
+  };
+  React.useEffect(() => {
+    window.addEventListener("offline", updateNetwork);
+    window.addEventListener("online", updateNetwork);
+    return () => {
+      window.removeEventListener("offline", updateNetwork);
+      window.removeEventListener("online", updateNetwork);
+    };
+  });
 
   /* простой вариант сортировки на в компоненте
   let filterUsers = props.users.filter((user) => {
@@ -83,17 +97,18 @@ const SearchContainer = (props) => {
   return (
     <div className="container">
       <div className="container-wrapper">
-        <Search
-          loop={loop}
-          bar={bar}
-          barBlue={barBlue}
-          showActiv={showActiv}
-          sortShow={sortShow}
-          sortUser={sortUser}
-          modalActive={modalActive}
-          name={name}
-          handleChange={handleChange}
-        />
+          <Search
+            loop={loop}
+            bar={bar}
+            barBlue={barBlue}
+            showActiv={showActiv}
+            sortShow={sortShow}
+            sortUser={sortUser}
+            modalActive={modalActive}
+            name={name}
+            handleChange={handleChange}
+            isOnline={isOnline}
+          />
         <Routes>
           <Route
             path="/*"

@@ -1,10 +1,8 @@
 import React from "react";
 import errorImg from "../../Assets/icons/error.svg";
+import { reload } from "../../utils";
 
 const Error = () => {
-  const reload = () => {
-    window.location.reload();
-  };
   return (
     <div className="error">
       <img className="error__img" src={errorImg} alt="error" />

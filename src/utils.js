@@ -13,3 +13,7 @@ export const dateToYMD = (date) => {
     var month = date.getMonth() + 1;
     return "" + (month <= 9 ? "0" + month : month) + "-" + (day <= 9 ? "0" + day : day);
 }
+
+export const reload = () => {
+    window.location.reload();
+};

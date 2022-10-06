@@ -1,7 +1,6 @@
 import React from "react";
 import Error from "../../../Componets/Error/Error";
 import ErrorSearch from "../../../Componets/ErrorSearch/ErrorSearch";
-import Fetching from "../../../Componets/Fetching/Fetching";
 import Loading from "../../../Componets/Fetching/Loading";
 import User from "../../../Componets/User/User";
 
