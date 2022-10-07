@@ -14,15 +14,18 @@ let initialState = {
     isFetching: false, // загрузка
     searchUserName: '', // параметр поиска
     sortUsers: 'firstName', // параметр сортировки по умолчанию по имени
+    usersBirthdayNextYear: [],
+    usersBirthdayThisYear: [],
 };
 
 // редьюсер получения массива пользователей
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-
         case SET_USERS: {
             // получение пользователей, фильтрация и сортировка списка
             return {
+                ...state.usersBirthdayNextYear = [],
+                ...state.usersBirthdayThisYear = [],
                 ...state, usersList: state.sortUsers === 'firstName' ? action.usersList.filter((user) => {
                     //если выбран фильтр "поалфавиту"
                     if (state.searchUserName) {
@@ -68,15 +71,15 @@ const usersReducer = (state = initialState, action) => {
                                 if (
                                     getDayOfYear(new Date(elem.birthday)) < getDayOfYear(new Date())
                                 ) {
-                                    acc[1].push(elem);
+                                    state.usersBirthdayNextYear.push(elem);
                                     //если номер дня рожения больще текущего то 
                                 } else {
-                                    acc[0].push(elem);
+                                    state.usersBirthdayThisYear.push(elem);
                                 }
                                 return acc;
                             },
-                            [[], []]
-                        )
+                            [], [],
+                        ),     
             }
         }
 

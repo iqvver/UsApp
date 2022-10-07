@@ -1,7 +1,7 @@
 @import './Tabs/TabsStyle/TabsStyle';
 
 .container-wrapper {
-    padding: 8px 16px 16px 16px;
+    padding: 10px 16px 16px 16px;
 }
 
 .search {
@@ -84,7 +84,6 @@
         flex-wrap: wrap;
 
         a {
-            font-style: normal;
             font-weight: 500;
             font-size: 15px;
             line-height: 20px;

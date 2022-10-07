@@ -7,7 +7,15 @@ import User from "../../../Componets/User/User";
 //страница со всеми пользователями
 //и переключением между режиамами сортировка
 
-const All = ({ errorAllUsers, isFetching, sortUser, usersList }) => {
+const All = ({
+  errorAllUsers,
+  isFetching,
+  sortUser,
+  searchUserName,
+  usersList,
+  usersBirthdayThisYear,
+  usersBirthdayNextYear,
+}) => {
   return (
     //показываю крутилку пока загружатся пользователи
     //пользователи загрузились, крутилка исчезает
@@ -16,18 +24,26 @@ const All = ({ errorAllUsers, isFetching, sortUser, usersList }) => {
         <Error />
       ) : isFetching ? (
         <Loading />
-      ) : usersList.length === 2 && sortUser === "firstName" ? (
+      ) : usersList.length === 0 && sortUser === "firstName" ? (
         <Loading />
       ) : null}
       <div className="tab">
-        {usersList.length === 0 && !isFetching && !errorAllUsers ? (
+        {usersList.length === 0 &&
+        searchUserName &&
+        sortUser === "firstName" ? (
           <ErrorSearch />
         ) : sortUser === "firstName" ? (
-          usersList.map((user, index) => <User key={index} user={user} />)
-        ) : usersList[1].length === 0 && usersList[0].length === 0 ? (
+          usersList.map((user, index) => (
+            <User key={index} user={user} sortUser={sortUser} />
+          ))
+        ) : usersBirthdayThisYear.length === 0 &&
+          usersBirthdayNextYear.length === 0 ? (
           <ErrorSearch />
         ) : (
-          <AllSortBd usersList={usersList} />
+          <AllSortBd
+            usersBirthdayThisYear={usersBirthdayThisYear}
+            usersBirthdayNextYear={usersBirthdayNextYear}
+          />
         )}
       </div>
     </>
@@ -35,12 +51,9 @@ const All = ({ errorAllUsers, isFetching, sortUser, usersList }) => {
 };
 export default All;
 
-const AllSortBd = ({ usersList }) => {
-  //если выбран режим сортировка по дгюрождения
-  let usersBirthdayThisYear = usersList[0];
-  let usersBirthdayNextYear = usersList[1];
-  return usersBirthdayThisYear.length >= 0 &&
-    usersBirthdayNextYear.length >= 0 ? (
+const AllSortBd = ({ usersBirthdayThisYear, usersBirthdayNextYear }) => {
+  //если выбран режим сортировка по дню рождения
+  return (
     <>
       {usersBirthdayThisYear.map((user, index) => (
         <User key={index} user={user} />
@@ -54,7 +67,5 @@ const AllSortBd = ({ usersList }) => {
         <User key={index} user={user} birthday={user.birthday} />
       ))}
     </>
-  ) : (
-    <Loading />
   );
 };

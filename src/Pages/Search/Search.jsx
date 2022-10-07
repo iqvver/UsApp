@@ -95,9 +95,9 @@ const Search = ({
               <div className="search__item">Android</div>
             </NavLink>
           </div>
-          <div className="divider"></div>
         </div>
       </div>
+      <div className="divider" />
     </>
   );
 };

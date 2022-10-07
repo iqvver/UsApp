@@ -8,12 +8,19 @@
     .search {
         &__nav {
             justify-content: center;
-            margin-bottom: 22px;
         }
+    }
+
+    .divider {
+        display: none;
     }
 }
 
 @media (max-width: 350px) {
+    .search {
+        &__nav {}
+    }
+
     .user {
 
         &__descr {}
@@ -23,8 +30,18 @@
         }
     }
 
-    .divider {
-        display: none;
+    .search {
+        &__nav {
+            flex-direction: column;
+
+            a {
+                font-size: 20px;
+            }
+        }
+    }
+
+    .tab {
+        padding-top: 70px;
     }
 
     .divider-sort {

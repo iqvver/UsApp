@@ -124,9 +124,12 @@ const SearchContainer = (props) => {
             element={
               <All
                 usersList={props.usersList}
+                usersBirthdayThisYear={props.usersBirthdayThisYear}
+                usersBirthdayNextYear={props.usersBirthdayNextYear}
                 isFetching={props.isFetching}
                 errorAllUsers={props.errorAllUsers}
                 sortUser={props.sortUsers}
+                searchUserName={props.searchUserName}
               />
             }
           />
@@ -165,7 +168,9 @@ let mapStateToProps = (state) => {
     //данные о сортировке пользователей
     sortUsers: state.usersPage.sortUsers,
     newSortUsers: state.usersPage.newSortUsers,
-
+    usersBirthdayThisYear: state.usersPage.usersBirthdayThisYear,
+    usersBirthdayNextYear: state.usersPage.usersBirthdayNextYear,
+    
     // ошибка
     errorAllUsers: state.usersPage.errorAllUsers,
 
