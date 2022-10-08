@@ -20,29 +20,27 @@ const All = ({
     //показываю крутилку пока загружатся пользователи
     //пользователи загрузились, крутилка исчезает
     <>
-      {errorAllUsers ? (
-        <Error />
-      ) : isFetching ? (
-        <Loading />
-      ) : usersList.length === 0 && sortUser === "firstName" ? (
-        <Loading />
-      ) : null}
+      {errorAllUsers ? <Error /> : null}
+      {isFetching ? <Loading /> : null}
+      {usersList.length === 0 && sortUser === "firstName" ? <Loading /> : null}
+
       <div className="tab">
         {usersList.length === 0 &&
         searchUserName &&
         sortUser === "firstName" ? (
           <ErrorSearch />
-        ) : sortUser === "firstName" ? (
+        ) : null}
+
+        {sortUser === "firstName" ? (
           usersList.map((user, index) => (
             <User key={index} user={user} sortUser={sortUser} />
           ))
-        ) : usersBirthdayThisYear.length === 0 &&
-          usersBirthdayNextYear.length === 0 ? (
-          <ErrorSearch />
         ) : (
           <AllSortBd
             usersBirthdayThisYear={usersBirthdayThisYear}
             usersBirthdayNextYear={usersBirthdayNextYear}
+            searchUserName={searchUserName}
+            sortUser={sortUser}
           />
         )}
       </div>
@@ -51,10 +49,25 @@ const All = ({
 };
 export default All;
 
-const AllSortBd = ({ usersBirthdayThisYear, usersBirthdayNextYear }) => {
+const AllSortBd = ({
+  usersBirthdayThisYear,
+  usersBirthdayNextYear,
+  searchUserName,
+  sortUser,
+}) => {
   //если выбран режим сортировка по дню рождения
   return (
     <>
+      {usersBirthdayThisYear.length === 0 &&
+      usersBirthdayNextYear.length === 0 &&
+      sortUser === "birthday" ? (
+        <Loading />
+      ) : null}
+      {usersBirthdayThisYear.length === 0 &&
+      usersBirthdayNextYear.length === 0 &&
+      searchUserName ? (
+        <ErrorSearch />
+      ) : null}
       {usersBirthdayThisYear.map((user, index) => (
         <User key={index} user={user} />
       ))}

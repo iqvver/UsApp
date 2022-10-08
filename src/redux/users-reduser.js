@@ -36,7 +36,7 @@ const usersReducer = (state = initialState, action) => {
                             user.userTag.toLowerCase().includes(state.searchUserName.toLowerCase())
                         );
                     }
-                    return action.usersList;
+                    return state.usersList;
                     // и сортировка  по имени
                 }).sort(function (a, b) {
                     var nameA = a.firstName.toLowerCase(),
@@ -56,7 +56,7 @@ const usersReducer = (state = initialState, action) => {
                                 user.userTag.toLowerCase().includes(state.searchUserName.toLowerCase())
                             );
                         }
-                        return action.usersList;
+                        return state.usersList;
                         //и сортировка. список отображается от ближайшей даты дня рождения вниз.
                     }).sort((a, b) =>
                         dateToYMD(new Date(a.birthday)) >
@@ -79,7 +79,7 @@ const usersReducer = (state = initialState, action) => {
                                 return acc;
                             },
                             [], [],
-                        ),     
+                        ),
             }
         }
 
