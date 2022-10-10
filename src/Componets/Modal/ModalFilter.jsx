@@ -3,22 +3,22 @@ import close from "../../Assets/icons/close.svg";
 
 // модальное окно для переключения режима сортировки
 
-const ModalFilter = ({ showActiv, sortShow, sortUser }) => {
+const ModalFilter = ({ switchActiv, switchSort, sortUser }) => {
   //хук сортировки поимени
   let setSortFirstName = () => {
-    sortShow("firstName");
-    showActiv(false);
+    switchSort("firstName");
+    switchActiv(false);
   };
   //хук сортировки по днюрождения
   let setSortBirtday = () => {
-    sortShow("birthday");
-    showActiv(false);
+    switchSort("birthday");
+    switchActiv(false);
   };
   return (
     <div className="modal">
       <div className="modal__title">Сортировка</div>
       <div className="modal__close">
-        <button onClick={() => showActiv(false)}>
+        <button onClick={() => switchActiv(false)}>
           <img src={close} alt="close" />
         </button>
       </div>

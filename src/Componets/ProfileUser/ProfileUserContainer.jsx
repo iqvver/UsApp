@@ -8,13 +8,12 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { useParams } from "react-router-dom";
 import Fetching from "../Fetching/Fetching";
-import Error from "../Error/Error";
+import ErrorServer from "../Errors/ErrorServer/ErrorServer";
 
 //контейнерная компонента (HOС) для получения деталей выбранного пользователя
 //и всех паретров для ее отрисовки
 
 const ProfileUserContainer = (props) => {
-
   //хук получения id пользователя
   let { userId } = useParams();
   React.useEffect(() => {
@@ -24,7 +23,7 @@ const ProfileUserContainer = (props) => {
   return (
     <>
       {props.errorProfileUser ? (
-        <Error />
+        <ErrorServer />
       ) : props.userProfile ? (
         <div>
           <ProfileUser

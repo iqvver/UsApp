@@ -24,7 +24,7 @@ import {
 } from "../../redux/filter-reduser";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { reload } from "../../utils";
+import { reload } from "../../Utils/utils";
 
 //контейнерная компонента (HOС) для получения списка пользователей,
 //переход меджу вкладками(департаментами)и сортировкой меджу ними
@@ -32,12 +32,13 @@ import { reload } from "../../utils";
 
 const SearchContainer = (props) => {
   //хуки обработки нействий и состояний компонетов
-  const [isOnline, setNetwork] = React.useState(window.navigator.onLine);
-  const [modalActive, showActiv] = React.useState(false);
-  const [sortUser, sortShow] = React.useState(props.sortUsers);
-  const [name, setName] = React.useState(props.searchUserName);
+  const [isOnline, getNetwork] = React.useState(window.navigator.onLine);
+  const [name, getName] = React.useState(props.searchUserName);
+  const [modalActive, switchActiv] = React.useState(false);
+  const [sortUser, switchSort] = React.useState(props.sortUsers);
+
   let handleChange = (event) => {
-    setName(event.target.value);
+    getName(event.target.value);
     newSearchUser(event.target.value);
   };
   React.useEffect(() => {
@@ -53,7 +54,7 @@ const SearchContainer = (props) => {
 
   //хук отслеживания состояния сети
   const updateNetwork = () => {
-    setNetwork(window.navigator.onLine);
+    getNetwork(window.navigator.onLine);
     reload();
   };
   React.useEffect(() => {
@@ -74,8 +75,8 @@ const SearchContainer = (props) => {
           loop={loop}
           bar={bar}
           barBlue={barBlue}
-          showActiv={showActiv}
-          sortShow={sortShow}
+          switchActiv={switchActiv}
+          switchSort={switchSort}
           sortUser={sortUser}
           modalActive={modalActive}
           name={name}
@@ -93,6 +94,7 @@ const SearchContainer = (props) => {
                 usersBirthdayNextYear={props.usersBirthdayNextYear}
                 isFetching={props.isFetching}
                 errorAllUsers={props.errorAllUsers}
+                isOnline={isOnline}
                 sortUser={props.sortUsers}
                 searchUserName={props.searchUserName}
               />

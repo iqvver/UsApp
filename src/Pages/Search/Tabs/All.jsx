@@ -1,6 +1,6 @@
 import React from "react";
-import Error from "../../../Componets/Error/Error";
-import ErrorSearch from "../../../Componets/ErrorSearch/ErrorSearch";
+import ErrorServer from "../../../Componets/Errors/ErrorServer/ErrorServer";
+import ErrorSearch from "../../../Componets/Errors/ErrorSearch/ErrorSearch";
 import Loading from "../../../Componets/Fetching/Loading";
 import User from "../../../Componets/User/User";
 
@@ -9,6 +9,7 @@ import User from "../../../Componets/User/User";
 
 const All = ({
   errorAllUsers,
+  isOnline,
   isFetching,
   sortUser,
   searchUserName,
@@ -20,7 +21,7 @@ const All = ({
     //показываю крутилку пока загружатся пользователи
     //пользователи загрузились, крутилка исчезает
     <>
-      {errorAllUsers ? <Error /> : null}
+      {errorAllUsers && isOnline ? <ErrorServer /> : null}
       {isFetching ? <Loading /> : null}
       {usersList.length === 0 && sortUser === "firstName" ? <Loading /> : null}
 

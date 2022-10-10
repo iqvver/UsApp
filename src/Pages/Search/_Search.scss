@@ -5,7 +5,7 @@
 }
 
 .search {
-    height: 105px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -13,6 +13,7 @@
     &_error {
         padding-left: 24px;
         width: 1280px;
+        height: 105px;
         background-color: #F44336;
     }
 
@@ -60,7 +61,21 @@
                 border: none;
                 background: none;
                 outline: none;
+                display: flex;
+
+                &:invalid:not(:placeholder-shown)+.search__form-error {
+                    display: block;
+                }
             }
+        }
+
+        &-error {
+            color: red;
+            text-align: left;
+            font-size: 12px;
+            display: block;
+            margin-top: 3px;
+            display: none;
         }
 
         &-btn {

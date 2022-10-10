@@ -1,6 +1,6 @@
 import React from "react";
-import errorImg from "../../Assets/icons/error.svg";
-import { reload } from "../../utils";
+import errorImg from "../../../Assets/icons/error.svg";
+import { reload } from "../../../Utils/utils";
 
 //компонента появляется если сервер ответил ошибкой
 

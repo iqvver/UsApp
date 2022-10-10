@@ -13,8 +13,7 @@ const User = ({ user, birthday, sortUser }) => {
         </div>
         <div className="user__descr">
           <div className="user__name">
-            {user.firstName}
-            {user.lastName} <span>{user.userTag}</span>
+            {user.firstName} {user.lastName} <span>{user.userTag}</span>
           </div>
           {birthday ? (
             <div className="user__data">

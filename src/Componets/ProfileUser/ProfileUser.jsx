@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { getNumberOfYears } from "../../utils";
+import { getNumberOfYears } from "../../Utils/utils";
 
 //страница детали
 const ProfileUser = ({ star, phone, chevron, userProfile }) => {

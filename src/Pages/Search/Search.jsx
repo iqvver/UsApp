@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import ModalFilter from "../../Componets/Modal/ModalFilter";
-import NetworkError from "../../Componets/NetworkError/NetworkError";
+import NetworkError from "../../Componets/Errors/ErrorNetwork/ErrorNetwork";
 
 //компонента находится вверху экрана с поле для поиска с иконкой «Поиск», кнопкой «Сортировка» и панелью вкладок.
 const Search = ({
@@ -9,9 +9,9 @@ const Search = ({
   bar,
   barBlue,
   modalActive,
-  showActiv,
+  switchActiv,
   sortUser,
-  sortShow,
+  switchSort,
   name,
   handleChange,
   isOnline,
@@ -20,11 +20,11 @@ const Search = ({
     <>
       <div className={modalActive ? "menu menu_active" : "menu"}>
         <ModalFilter
-          showActiv={showActiv}
-          sortShow={sortShow}
+          switchActiv={switchActiv}
+          switchSort={switchSort}
           sortUser={sortUser}
         />
-        <div className="menu__overlay" onClick={() => showActiv(false)}></div>
+        <div className="menu__overlay" onClick={() => switchActiv(false)}></div>
       </div>
       <div className="container">
         <div className="search">
@@ -39,12 +39,17 @@ const Search = ({
                     name="search"
                     id="search"
                     value={name}
-                    type="text"
+                    type="search"
                     placeholder="Введи имя, тег..."
+                    pattern="[a-zA-Z]+"
+                    maxlength="18"
                   />
+                  <span className="search__form-error">
+                    Введены не допустимые символы для поска
+                  </span>
                 </div>
                 <div className="search__form-btn">
-                  <button onClick={() => showActiv(true)}>
+                  <button onClick={() => switchActiv(true)}>
                     <img
                       className="search__form-btn__img search__form-btn__img_active"
                       src={sortUser === "birthday" ? barBlue : bar}

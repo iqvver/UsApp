@@ -34,6 +34,11 @@ export const getNumberOfYears = (userProfile) => {
     return age;
 };
 
+
+/**
+ * @param {reload} now 
+ */
+
 // перезакрузка страници
 export const reload = () => {
     window.location.reload();

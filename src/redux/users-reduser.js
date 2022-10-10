@@ -1,5 +1,5 @@
 import { userAPI } from '../Api/Api';
-import { getDayOfYear, dateToYMD } from "../utils";
+import { getDayOfYear, dateToYMD } from "../Utils/utils";
 
 const SET_USERS = 'SET_USERS'; // перенная для получения всех пользователей
 const SET_ERROR = 'SET_ERROR'; // ошибка

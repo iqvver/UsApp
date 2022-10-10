@@ -1,5 +1,5 @@
 import React from "react";
-import errorImg from "../../Assets/icons/errorLoop.svg";
+import errorImg from "../../../Assets/icons/errorLoop.svg";
 
 //компонента появляется если пользователь не найден
 
