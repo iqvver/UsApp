@@ -44,6 +44,13 @@
         padding-top: 70px;
     }
 
+    .loading {
+        &__wrapper {
+            margin-bottom: -80px;
+            margin-top: 50px;
+        }
+    }
+
     .divider-sort {
         margin: 0px 0 20px 0;
     }

@@ -6,14 +6,14 @@ import userPhoto from "../../Assets/image/gus.svg";
 
 const User = ({ user, birthday, sortUser }) => {
   return (
-    <div className={sortUser === 'firstName' ? "user" : 'user user_sort-bd'}>
+    <div className={sortUser === "firstName" ? "user" : "user user_sort-bd"}>
       <NavLink to={`/profile/${user.id}`}>
         <div className="user__img">
           <img src={user.avatarUrl} alt={userPhoto} />
         </div>
         <div className="user__descr">
           <div className="user__name">
-            {user.firstName} {""}
+            {user.firstName}
             {user.lastName} <span>{user.userTag}</span>
           </div>
           {birthday ? (
@@ -26,7 +26,7 @@ const User = ({ user, birthday, sortUser }) => {
           ) : (
             <div></div>
           )}
-          <div className="user__team">{user.department}</div>
+          <div className="user__department">{user.department}</div>
         </div>
       </NavLink>
     </div>

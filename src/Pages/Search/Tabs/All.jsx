@@ -29,9 +29,7 @@ const All = ({
         searchUserName &&
         sortUser === "firstName" ? (
           <ErrorSearch />
-        ) : null}
-
-        {sortUser === "firstName" ? (
+        ) : sortUser === "firstName" ? (
           usersList.map((user, index) => (
             <User key={index} user={user} sortUser={sortUser} />
           ))

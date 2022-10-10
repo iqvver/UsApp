@@ -65,41 +65,6 @@ const SearchContainer = (props) => {
     };
   });
 
-  /* простой вариант сортировки на в компоненте
-  let filterUsers = props.users.filter((user) => {
-    return (
-      user.firstName.toLowerCase().includes(name.toLowerCase()) ||
-      user.lastName.toLowerCase().includes(name.toLowerCase()) ||
-      user.userTag.toLowerCase().includes(name.toLowerCase())
-    );
-  });
-
-  filterUsers =
-    sortUser === "firstName"
-      ? filterUsers.sort((a, b) => (a.firstName > b.firstName ? 1 : -1))
-      : filterUsers
-          .sort((a, b) =>
-            dateToYMD(new Date(a.birthday)) >
-            dateToYMD(new Date(b.birthday)) >
-            0
-              ? 1
-              : -1
-          )
-          .reduce(
-            (acc, elem) => {
-              if (
-                getDayOfYear(new Date(elem.birthday)) < getDayOfYear(new Date())
-              ) {
-                acc[1].push(elem);
-              } else {
-                acc[0].push(elem);
-              }
-              return acc;
-            },
-            [[], []]
-          );
-  */
-
   //отрисовка поля для поиска с иконкой «Поиск», кнопкой «Сортировка»
   //и панелью вкладок. При переключении между вкладками на главном экране
   return (
@@ -170,7 +135,7 @@ let mapStateToProps = (state) => {
     newSortUsers: state.usersPage.newSortUsers,
     usersBirthdayThisYear: state.usersPage.usersBirthdayThisYear,
     usersBirthdayNextYear: state.usersPage.usersBirthdayNextYear,
-    
+
     // ошибка
     errorAllUsers: state.usersPage.errorAllUsers,
 

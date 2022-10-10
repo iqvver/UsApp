@@ -4,7 +4,7 @@
     position: relative;
     width: 373px;
     height: 192px;
-    background: #FFFFFF;
+    background: $color-white;
     border-radius: 20px;
     position: fixed;
     top: 40%;
@@ -28,29 +28,26 @@
         button {
             width: 24px;
             height: 24px;
-            background-color: #F7F7F8;
+            background-color: $subcolor-bg;
             border-radius: 100%;
             border: none;
         }
     }
 
     &__body {
-        height: 80px;
         padding-left: 14px;
+        margin-top: 35px;
+        height: 80px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-content: center;
-        margin-top: 35px;
 
         label {
             margin-top: -5px;
             display: flex;
-            align-items: center;
-            align-content: center;
             width: 200px;
             margin-left: 40px;
-            text-align: left;
             cursor: pointer;
         }
     }
@@ -60,7 +57,7 @@
         width: 15px;
         border-radius: 100%;
         border: 2px solid $main-color;
-        background-color: #FFFFFF;
+        background-color: $color-white;
         line-height: normal;
         padding: auto;
 
@@ -94,6 +91,6 @@
         width: 100%;
         height: 100%;
         background: rgba(5, 5, 16, 0.16);
-        //opacity: .75;
+        opacity: .75;
     }
 }

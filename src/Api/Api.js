@@ -30,7 +30,7 @@ export const profileAPI = {
     getProfile(userId) {
         return instance.get(`users?__` + userId)
             // Запрос выполнен, и сервер ответил все ок
-            .then(response => { return response })
+            //.then(response => { return response })
             .catch((error) => {
                 if (error) {
                     // Запрос выполнен, и сервер ответил ошибкой

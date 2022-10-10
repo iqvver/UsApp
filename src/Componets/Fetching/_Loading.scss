@@ -2,7 +2,6 @@
     padding: 25px 16px 22px 0px;
 
     &__wrapper {
-        //margin-top: 22px;
         margin-bottom: -30px;
         display: flex;
         width: 235px;
@@ -52,7 +51,7 @@
     left: -150%;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1));
     animation: flareAnimation 3s infinite linear; // Время и тип анимации
-    
+
 }
 
 @keyframes flareAnimation {

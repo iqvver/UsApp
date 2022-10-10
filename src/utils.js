@@ -23,7 +23,7 @@ export const dateToYMD = (date) => {
 export const getNumberOfYears = (userProfile) => {
     var now = new Date(); //Текущя дата
     var today = new Date(now.getFullYear(), now.getMonth(), now.getDate()); //Текущя дата без времени
-    var dob = new Date(userProfile[0].birthday); //Дата рождения
+    var dob = new Date(userProfile.birthday); //Дата рождения
     var dobnow = new Date(today.getFullYear(), dob.getMonth(), dob.getDate()); //ДР в текущем году
     //Возраст = текущий год - год рождения
     let age = today.getFullYear() - dob.getFullYear();

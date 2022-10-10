@@ -33,7 +33,7 @@ export const setErrorAC = (errorProfileUser) => ({ type: SET_ERROR, errorProfile
 export const getProfileUser = (userId) => async (dispatch) => {
     let profile = await profileAPI.getProfile(userId);
     if (profile.status < 400) {
-        dispatch(setProfileUserAC(profile.data.items));
+        dispatch(setProfileUserAC(profile.data.items[0]));
     } else {
         dispatch(setErrorAC(profile.message));
     }
