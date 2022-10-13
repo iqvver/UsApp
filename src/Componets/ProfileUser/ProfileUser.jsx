@@ -17,7 +17,7 @@ const ProfileUser = ({
   if (usersList.length === 0) {
     usersList = usersBirthdayNextYear;
   } else if (usersBirthdayNextYear === 0) {
-    usersList = usersBirthdayThisYear;
+    usersList += usersBirthdayThisYear;
   }
   debugger;
   return (
