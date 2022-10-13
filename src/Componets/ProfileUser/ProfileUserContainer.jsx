@@ -17,15 +17,12 @@ import ErrorServer from "../Errors/ErrorServer/ErrorServer";
 const ProfileUserContainer = (props) => {
   //хук получения id пользователя
   let { userId } = useParams();
-  React.useEffect(() => {
-    props.getProfileUser(userId);
-  }, [userId]);
 
   return (
     <>
-      {props.errorProfileUser ? (
+      {props.errorAllUsers ? (
         <ErrorServer />
-      ) : props.userProfile ? (
+      ) : props.usersList ? (
         <div>
           <ProfileUser
             star={star}
@@ -33,6 +30,10 @@ const ProfileUserContainer = (props) => {
             chevron={chevron}
             userPhoto={userPhoto}
             userProfile={props.userProfile}
+            userId={userId}
+            usersList={props.usersList}
+            usersBirthdayThisYear={props.usersBirthdayThisYear}
+            usersBirthdayNextYear={props.usersBirthdayNextYear}
           />
         </div>
       ) : (
@@ -46,6 +47,13 @@ const ProfileUserContainer = (props) => {
 let mapStateToProps = (state) => ({
   userProfile: state.profilePage.userProfile,
   errorProfileUser: state.profilePage.errorProfileUser,
+
+  // для получения деталей профиля использую локальные данные
+  //так как через API профиль приходит всегда один и тот же
+  usersList: state.usersPage.usersList,
+  usersBirthdayThisYear: state.usersPage.usersBirthdayThisYear,
+  usersBirthdayNextYear: state.usersPage.usersBirthdayNextYear,
+  errorAllUsers: state.usersPage.errorAllUsers,
 });
 
 export default compose(connect(mapStateToProps, { getProfileUser }))(

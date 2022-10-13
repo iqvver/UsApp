@@ -4,10 +4,10 @@ import userPhoto from "../../Assets/image/gus.svg";
 
 // компонент пользователь
 
-const User = ({ user, birthday, sortUser }) => {
+const User = ({ user, birthday, sortUser, index }) => {
   return (
     <div className={sortUser === "firstName" ? "user" : "user user_sort-bd"}>
-      <NavLink to={`/profile/${user.id}`}>
+      <NavLink to={`/profile/${index}`}>
         <div className="user__img">
           <img src={user.avatarUrl ? user.avatarUrl : userPhoto} alt="photo" />
         </div>

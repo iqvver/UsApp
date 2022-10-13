@@ -9,7 +9,7 @@ const Designers = ({ designersList }) => {
       {!designersList ? <Fetching /> : null}
       <div className="tab">
         {designersList.map((user, index) => (
-          <User key={index} user={user} />
+          <User index={index} user={user} />
         ))}
       </div>
     </>

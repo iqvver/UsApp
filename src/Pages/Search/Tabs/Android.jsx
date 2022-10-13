@@ -9,7 +9,7 @@ const Android = ({ androidList }) => {
       {androidList.length === 0 ? <Fetching /> : null}
       <div className="tab">
         {androidList.map((user, index) => (
-          <User key={index} user={user} />
+          <User index={index} user={user} />
         ))}
       </div>
     </>

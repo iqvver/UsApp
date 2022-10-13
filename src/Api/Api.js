@@ -26,6 +26,7 @@ export const userAPI = {
 }
 
 // переход в профиль выбранной пользователя
+// почему всегда приходит один и тот же профиль по этому ипользовал локально
 export const profileAPI = {
     getProfile(userId) {
         return instance.get(`users?__` + userId)

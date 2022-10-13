@@ -1,5 +1,7 @@
 import { profileAPI } from "../Api/Api";
 
+// профиль получаю локально, почему-то сервер отвечает всегда одинаково
+
 const SET_USER_PROFILE = 'SET_USER_PROFILE'; // перенная для получения профиля пользователя
 const SET_ERROR = 'SET_ERROR'; // ошибка
 

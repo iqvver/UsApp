@@ -3,8 +3,23 @@ import { useNavigate } from "react-router-dom";
 import { getNumberOfYears } from "../../Utils/utils";
 
 //страница детали
-const ProfileUser = ({ star, phone, chevron, userPhoto, userProfile }) => {
+const ProfileUser = ({
+  star,
+  phone,
+  chevron,
+  userPhoto,
+  userId,
+  usersList,
+  usersBirthdayNextYear,
+  usersBirthdayThisYear,
+}) => {
   const navigate = useNavigate();
+  if (usersList.length === 0) {
+    usersList = usersBirthdayNextYear;
+  } else if (usersBirthdayNextYear === 0) {
+    usersList = usersBirthdayThisYear;
+  }
+  debugger;
   return (
     <div className="profile">
       <div className="container">
@@ -16,15 +31,22 @@ const ProfileUser = ({ star, phone, chevron, userPhoto, userProfile }) => {
           </div>
           <div className="profile__wrapper">
             <div className="profile__img">
-              <img src={userProfile.avatarUrl ? userProfile.avatarUrl : userPhoto} alt='photo' />
+              <img
+                src={
+                  usersList[userId].avatarUrl
+                    ? usersList[userId].avatarUrl
+                    : userPhoto
+                }
+                alt="photo"
+              />
             </div>
             <div className="profile__descr">
               <div className="profile__name">
-                {userProfile.firstName} {userProfile.lastName}{" "}
-                <span>{userProfile.userTag}</span>
+                {usersList[userId].firstName} {usersList[userId].lastName}{" "}
+                <span>{usersList[userId].userTag}</span>
               </div>
               <div className="profile__department">
-                {userProfile.department}
+                {usersList[userId].department}
               </div>
             </div>
           </div>
@@ -32,15 +54,20 @@ const ProfileUser = ({ star, phone, chevron, userPhoto, userProfile }) => {
         <div className="profile__info">
           <div className="profile__age">
             <img src={star} alt="star" />
-            <div className="profile__age-data">{userProfile.birthday}</div>
+            <div className="profile__age-data">
+              {usersList[userId].birthday}
+            </div>
             <div className="profile__age-day">
-              {getNumberOfYears(userProfile)} лет
+              {getNumberOfYears(usersList[userId])} лет
             </div>
           </div>
           <div className="profile__phone">
             <img src={phone} alt="phone" />
-            <a href={"tel:" + userProfile.phone} className="profile__phone-num">
-              {userProfile.phone}
+            <a
+              href={"tel:" + usersList[userId].phone}
+              className="profile__phone-num"
+            >
+              {usersList[userId].phone}
             </a>
           </div>
         </div>

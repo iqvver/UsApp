@@ -9,7 +9,7 @@ const Managers = ({ managementList }) => {
       {!managementList ? <Fetching /> : null}
       <div className="tab">
         {managementList.map((user, index) => (
-          <User key={index} user={user} />
+          <User index={index} user={user} />
         ))}
       </div>
     </>
