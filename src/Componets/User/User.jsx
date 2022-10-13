@@ -9,7 +9,7 @@ const User = ({ user, birthday, sortUser }) => {
     <div className={sortUser === "firstName" ? "user" : "user user_sort-bd"}>
       <NavLink to={`/profile/${user.id}`}>
         <div className="user__img">
-          <img src={user.avatarUrl} alt={userPhoto} />
+          <img src={user.avatarUrl ? user.avatarUrl : userPhoto} alt="photo" />
         </div>
         <div className="user__descr">
           <div className="user__name">

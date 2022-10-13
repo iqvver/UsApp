@@ -16,7 +16,7 @@ const ProfileUser = ({ star, phone, chevron, userPhoto, userProfile }) => {
           </div>
           <div className="profile__wrapper">
             <div className="profile__img">
-              <img src={userProfile.avatarUrl} alt={userPhoto} />
+              <img src={userProfile.avatarUrl ? userProfile.avatarUrl : userPhoto} alt='photo' />
             </div>
             <div className="profile__descr">
               <div className="profile__name">
