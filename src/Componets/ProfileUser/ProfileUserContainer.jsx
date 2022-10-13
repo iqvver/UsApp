@@ -3,6 +3,7 @@ import ProfileUser from "./ProfileUser";
 import star from "../../Assets/icons/star.svg";
 import phone from "../../Assets/icons/phone.svg";
 import chevron from "../../Assets/icons/chevron.svg";
+import userPhoto from "../../Assets/image/gus.svg";
 import { getProfileUser } from "../../redux/profile-reducer";
 import { connect } from "react-redux";
 import { compose } from "redux";
@@ -30,6 +31,7 @@ const ProfileUserContainer = (props) => {
             star={star}
             phone={phone}
             chevron={chevron}
+            userPhoto={userPhoto}
             userProfile={props.userProfile}
           />
         </div>

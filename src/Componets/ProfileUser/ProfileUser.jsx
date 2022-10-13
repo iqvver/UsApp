@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getNumberOfYears } from "../../Utils/utils";
 
 //страница детали
-const ProfileUser = ({ star, phone, chevron, userProfile }) => {
+const ProfileUser = ({ star, phone, chevron, userPhoto, userProfile }) => {
   const navigate = useNavigate();
   return (
     <div className="profile">
@@ -16,7 +16,7 @@ const ProfileUser = ({ star, phone, chevron, userProfile }) => {
           </div>
           <div className="profile__wrapper">
             <div className="profile__img">
-              <img src={userProfile.avatarUrl} alt="photo" />
+              <img src={userProfile.avatarUrl} alt={userPhoto} />
             </div>
             <div className="profile__descr">
               <div className="profile__name">
