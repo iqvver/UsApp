@@ -18,6 +18,14 @@ const ProfileUserContainer = (props) => {
   //хук получения id пользователя
   let { userId } = useParams();
 
+  let usersList = "";
+  let usersListBd = props.usersBirthdayThisYear.concat(
+    props.usersBirthdayNextYear
+  );
+  props.usersList.length !== 0
+    ? (usersList = props.usersList.find((u) => u.id === userId))
+    : (usersList = usersListBd.find((u) => u.id === userId));
+
   return (
     <>
       {props.errorAllUsers ? (
@@ -31,7 +39,7 @@ const ProfileUserContainer = (props) => {
             userPhoto={userPhoto}
             userProfile={props.userProfile}
             userId={userId}
-            usersList={props.usersList}
+            usersList={usersList}
             usersBirthdayThisYear={props.usersBirthdayThisYear}
             usersBirthdayNextYear={props.usersBirthdayNextYear}
           />

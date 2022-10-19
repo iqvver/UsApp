@@ -14,12 +14,7 @@ const ProfileUser = ({
   usersBirthdayThisYear,
 }) => {
   const navigate = useNavigate();
-  if (usersList.length === 0) {
-    usersList = usersBirthdayNextYear;
-  } else if (usersBirthdayNextYear === 0) {
-    usersList += usersBirthdayThisYear;
-  }
-  debugger;
+  
   return (
     <div className="profile">
       <div className="container">
@@ -33,8 +28,8 @@ const ProfileUser = ({
             <div className="profile__img">
               <img
                 src={
-                  usersList[userId].avatarUrl
-                    ? usersList[userId].avatarUrl
+                  usersList.avatarUrl
+                    ? usersList.avatarUrl
                     : userPhoto
                 }
                 alt="photo"
@@ -42,11 +37,11 @@ const ProfileUser = ({
             </div>
             <div className="profile__descr">
               <div className="profile__name">
-                {usersList[userId].firstName} {usersList[userId].lastName}{" "}
-                <span>{usersList[userId].userTag}</span>
+                {usersList.firstName} {usersList.lastName}{" "}
+                <span>{usersList.userTag}</span>
               </div>
               <div className="profile__department">
-                {usersList[userId].department}
+                {usersList.department}
               </div>
             </div>
           </div>
@@ -55,19 +50,19 @@ const ProfileUser = ({
           <div className="profile__age">
             <img src={star} alt="star" />
             <div className="profile__age-data">
-              {usersList[userId].birthday}
+              {usersList.birthday}
             </div>
             <div className="profile__age-day">
-              {getNumberOfYears(usersList[userId])} лет
+              {getNumberOfYears(usersList)} лет
             </div>
           </div>
           <div className="profile__phone">
             <img src={phone} alt="phone" />
             <a
-              href={"tel:" + usersList[userId].phone}
+              href={"tel:" + usersList.phone}
               className="profile__phone-num"
             >
-              {usersList[userId].phone}
+              {usersList.phone}
             </a>
           </div>
         </div>
