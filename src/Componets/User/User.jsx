@@ -4,7 +4,7 @@ import userPhoto from "../../Assets/image/gus.svg";
 
 // компонент пользователь
 
-const User = ({ user, birthday, sortUser, index }) => {
+const User = ({ user, birthday, sortUser }) => {
   return (
     <div className={sortUser === "firstName" ? "user" : "user user_sort-bd"}>
       <NavLink to={`/profile/${user.id}`}>

@@ -32,7 +32,7 @@ const All = ({
           <ErrorSearch />
         ) : sortUser === "firstName" ? (
           usersList.map((user, index) => (
-            <User index={index} user={user} sortUser={sortUser} />
+            <User key={index} user={user} sortUser={sortUser} />
           ))
         ) : (
           <AllSortBd
@@ -69,7 +69,7 @@ const AllSortBd = ({
         <ErrorSearch />
       ) : null}
       {usersBirthdayThisYear.map((user, index) => (
-        <User index={index} user={user} birthday={user.birthday} />
+        <User key={index} user={user} birthday={user.birthday} />
       ))}
       <div className="divider-sort">
         <div className="divider-sort__line"></div>
@@ -77,7 +77,7 @@ const AllSortBd = ({
         <div className="divider-sort__line"></div>
       </div>
       {usersBirthdayNextYear.map((user, index) => (
-        <User index={index} user={user} birthday={user.birthday} />
+        <User key={index} user={user} birthday={user.birthday} />
       ))}
     </>
   );

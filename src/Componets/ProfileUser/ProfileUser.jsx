@@ -3,18 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { getNumberOfYears } from "../../Utils/utils";
 
 //страница детали
-const ProfileUser = ({
-  star,
-  phone,
-  chevron,
-  userPhoto,
-  userId,
-  usersList,
-  usersBirthdayNextYear,
-  usersBirthdayThisYear,
-}) => {
+const ProfileUser = ({ star, phone, chevron, userPhoto, userProfile }) => {
   const navigate = useNavigate();
-  
   return (
     <div className="profile">
       <div className="container">
@@ -27,42 +17,31 @@ const ProfileUser = ({
           <div className="profile__wrapper">
             <div className="profile__img">
               <img
-                src={
-                  usersList.avatarUrl
-                    ? usersList.avatarUrl
-                    : userPhoto
-                }
+                src={userProfile.avatarUrl ? userProfile.avatarUrl : userPhoto}
                 alt="photo"
               />
             </div>
             <div className="profile__descr">
               <div className="profile__name">
-                {usersList.firstName} {usersList.lastName}{" "}
-                <span>{usersList.userTag}</span>
+                {userProfile.firstName} {userProfile.lastName}{" "}
+                <span>{userProfile.userTag}</span>
               </div>
-              <div className="profile__department">
-                {usersList.department}
-              </div>
+              <div className="profile__department">{userProfile.department}</div>
             </div>
           </div>
         </div>
         <div className="profile__info">
           <div className="profile__age">
             <img src={star} alt="star" />
-            <div className="profile__age-data">
-              {usersList.birthday}
-            </div>
+            <div className="profile__age-data">{userProfile.birthday}</div>
             <div className="profile__age-day">
-              {getNumberOfYears(usersList)} лет
+              {getNumberOfYears(userProfile)} лет
             </div>
           </div>
           <div className="profile__phone">
             <img src={phone} alt="phone" />
-            <a
-              href={"tel:" + usersList.phone}
-              className="profile__phone-num"
-            >
-              {usersList.phone}
+            <a href={"tel:" + userProfile.phone} className="profile__phone-num">
+              {userProfile.phone}
             </a>
           </div>
         </div>

@@ -4,7 +4,7 @@ import star from "../../Assets/icons/star.svg";
 import phone from "../../Assets/icons/phone.svg";
 import chevron from "../../Assets/icons/chevron.svg";
 import userPhoto from "../../Assets/image/gus.svg";
-import { getProfileUser } from "../../redux/profile-reducer";
+import { getProfileUser, getNewUserId } from "../../redux/profile-reducer";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { useParams } from "react-router-dom";
@@ -18,19 +18,16 @@ const ProfileUserContainer = (props) => {
   //хук получения id пользователя
   let { userId } = useParams();
 
-  let usersList = "";
-  let usersListBd = props.usersBirthdayThisYear.concat(
-    props.usersBirthdayNextYear
-  );
-  props.usersList.length !== 0
-    ? (usersList = props.usersList.find((u) => u.id === userId))
-    : (usersList = usersListBd.find((u) => u.id === userId));
+  React.useEffect(() => {
+    props.getProfileUser();
+    props.getNewUserId(userId);
+  }, [userId]);
 
   return (
     <>
-      {props.errorAllUsers ? (
+      {props.errorProfileUser ? (
         <ErrorServer />
-      ) : props.usersList ? (
+      ) : props.userProfile && !props.isFetching ? (
         <div>
           <ProfileUser
             star={star}
@@ -38,10 +35,6 @@ const ProfileUserContainer = (props) => {
             chevron={chevron}
             userPhoto={userPhoto}
             userProfile={props.userProfile}
-            userId={userId}
-            usersList={usersList}
-            usersBirthdayThisYear={props.usersBirthdayThisYear}
-            usersBirthdayNextYear={props.usersBirthdayNextYear}
           />
         </div>
       ) : (
@@ -55,15 +48,12 @@ const ProfileUserContainer = (props) => {
 let mapStateToProps = (state) => ({
   userProfile: state.profilePage.userProfile,
   errorProfileUser: state.profilePage.errorProfileUser,
-
+  isFetching: state.profilePage.isFetching,
+  userId: state.profilePage.userId,
   // для получения деталей профиля использую локальные данные
   //так как через API профиль приходит всегда один и тот же
-  usersList: state.usersPage.usersList,
-  usersBirthdayThisYear: state.usersPage.usersBirthdayThisYear,
-  usersBirthdayNextYear: state.usersPage.usersBirthdayNextYear,
-  errorAllUsers: state.usersPage.errorAllUsers,
 });
 
-export default compose(connect(mapStateToProps, { getProfileUser }))(
-  ProfileUserContainer
-);
+export default compose(
+  connect(mapStateToProps, { getProfileUser, getNewUserId })
+)(ProfileUserContainer);

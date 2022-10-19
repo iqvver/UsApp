@@ -42,7 +42,7 @@ const Search = ({
                     type="search"
                     placeholder="Введи имя, тег..."
                     pattern="[a-zA-Z]+"
-                    maxlength="18"
+                    maxLength="18"
                   />
                   <span className="search__form-error">
                     Введены не допустимые символы для поска
