@@ -18,7 +18,7 @@ const ProfileUser = ({ star, phone, chevron, userPhoto, userProfile }) => {
             <div className="profile__img">
               <img
                 src={userProfile.avatarUrl ? userProfile.avatarUrl : userPhoto}
-                alt="photo"
+                alt=""
               />
             </div>
             <div className="profile__descr">
@@ -26,7 +26,9 @@ const ProfileUser = ({ star, phone, chevron, userPhoto, userProfile }) => {
                 {userProfile.firstName} {userProfile.lastName}{" "}
                 <span>{userProfile.userTag}</span>
               </div>
-              <div className="profile__department">{userProfile.department}</div>
+              <div className="profile__department">
+                {userProfile.department}
+              </div>
             </div>
           </div>
         </div>
@@ -35,7 +37,7 @@ const ProfileUser = ({ star, phone, chevron, userPhoto, userProfile }) => {
             <img src={star} alt="star" />
             <div className="profile__age-data">{userProfile.birthday}</div>
             <div className="profile__age-day">
-              {getNumberOfYears(userProfile)} лет
+              {getNumberOfYears(userProfile)}
             </div>
           </div>
           <div className="profile__phone">

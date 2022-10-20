@@ -1,4 +1,4 @@
-import { profileAPI, userAPI } from "../Api/Api";
+import { userAPI } from "../Api/Api";
 
 // профиль получаю локально, почему-то сервер отвечает всегда одинаково
 
