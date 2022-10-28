@@ -5,7 +5,7 @@ import All from "./Tabs/All";
 import Analysts from "./Tabs/Analysts";
 import Android from "./Tabs/Android";
 import Designers from "./Tabs/Designers";
-import Ios from "./Tabs/Ios";
+import Ios from "./Tabs/iOS";
 import Managers from "./Tabs/Managers";
 import loop from "../../Assets/icons/loop.svg";
 import bar from "../../Assets/icons/bar.svg";
