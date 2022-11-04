@@ -69,7 +69,7 @@ const AllSortBd = ({
         <ErrorSearch />
       ) : null}
       {usersBirthdayThisYear.map((user, index) => (
-        <User key={index} user={user} birthday={user.birthday} />
+        <User index={index} user={user} />
       ))}
       <div className="divider-sort">
         <div className="divider-sort__line"></div>
