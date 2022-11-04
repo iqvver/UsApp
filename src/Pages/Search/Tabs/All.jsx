@@ -73,7 +73,7 @@ const AllSortBd = ({
       ))}
       <div className="divider-sort">
         <div className="divider-sort__line"></div>
-        <div className="divider-sort__text">2022</div>
+        <div className="divider-sort__text">2023</div>
         <div className="divider-sort__line"></div>
       </div>
       {usersBirthdayNextYear.map((user, index) => (
