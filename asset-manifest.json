@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/UsApp/static/css/main.d5a6e65b.css",
+    "main.js": "/UsApp/static/js/main.ffb8ceb1.js",
+    "static/js/787.7e8e3573.chunk.js": "/UsApp/static/js/787.7e8e3573.chunk.js",
+    "static/media/gus.svg": "/UsApp/static/media/gus.ac856b27879d49b947b6f3bd1a1a29d1.svg",
+    "static/media/errorLoop.svg": "/UsApp/static/media/errorLoop.60df0b3ef22978153eb16e3372059636.svg",
+    "static/media/error.svg": "/UsApp/static/media/error.9b0fc2d6b5667085d76fea8a4ee60b70.svg",
+    "static/media/phone.svg": "/UsApp/static/media/phone.b4c1686bdf2067168983616964b9470a.svg",
+    "static/media/bar.svg": "/UsApp/static/media/bar.4a17b1f0121a14f57aea033420ce9775.svg",
+    "static/media/barBlue.svg": "/UsApp/static/media/barBlue.e3ca495f6be60d775bc7f3a3b176f608.svg",
+    "static/media/star.svg": "/UsApp/static/media/star.853786d1d6b84be0fd1c59bc8257d6a1.svg",
+    "static/media/loop.svg": "/UsApp/static/media/loop.548e99eeb4f51bc7ec390d6568502d6e.svg",
+    "static/media/chevron.svg": "/UsApp/static/media/chevron.89324cb0841ae74c642ef2e4931d22d3.svg",
+    "static/media/close.svg": "/UsApp/static/media/close.f3d811a71c774e39ef09709075ee2867.svg",
+    "index.html": "/UsApp/index.html",
+    "main.d5a6e65b.css.map": "/UsApp/static/css/main.d5a6e65b.css.map",
+    "main.ffb8ceb1.js.map": "/UsApp/static/js/main.ffb8ceb1.js.map",
+    "787.7e8e3573.chunk.js.map": "/UsApp/static/js/787.7e8e3573.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d5a6e65b.css",
+    "static/js/main.ffb8ceb1.js"
+  ]
+}
