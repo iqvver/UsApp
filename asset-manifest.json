@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/UsApp/static/css/main.d5a6e65b.css",
-    "main.js": "/UsApp/static/js/main.ffb8ceb1.js",
+    "main.js": "/UsApp/static/js/main.ccc35b3c.js",
     "static/js/787.7e8e3573.chunk.js": "/UsApp/static/js/787.7e8e3573.chunk.js",
     "static/media/gus.svg": "/UsApp/static/media/gus.ac856b27879d49b947b6f3bd1a1a29d1.svg",
     "static/media/errorLoop.svg": "/UsApp/static/media/errorLoop.60df0b3ef22978153eb16e3372059636.svg",
@@ -15,11 +15,11 @@
     "static/media/close.svg": "/UsApp/static/media/close.f3d811a71c774e39ef09709075ee2867.svg",
     "index.html": "/UsApp/index.html",
     "main.d5a6e65b.css.map": "/UsApp/static/css/main.d5a6e65b.css.map",
-    "main.ffb8ceb1.js.map": "/UsApp/static/js/main.ffb8ceb1.js.map",
+    "main.ccc35b3c.js.map": "/UsApp/static/js/main.ccc35b3c.js.map",
     "787.7e8e3573.chunk.js.map": "/UsApp/static/js/787.7e8e3573.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d5a6e65b.css",
-    "static/js/main.ffb8ceb1.js"
+    "static/js/main.ccc35b3c.js"
   ]
 }
